@@ -1,0 +1,45 @@
+/* Loading Custom Style */
+
+#loader-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s;
+}
+
+#loader-screen {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#loader-screen.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.loader {
+    border: 10px solid rgb(211, 211, 211);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    border-top: 10px solid #a0aec0;
+    width: 64px;
+    height: 64px;
+    animation: spin 1s linear infinite;
+    z-index: 99999;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
