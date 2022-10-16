@@ -25,6 +25,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // dashboard
     Route::get('dashboard', [GlobalController::class, 'dashboard']);
+
+    // blast email
+    Route::get('blast-email', [GlobalController::class, 'blastEmail']);
     
     // user
     Route::get('setting/user-bo', [UserController::class, 'userBo']);
