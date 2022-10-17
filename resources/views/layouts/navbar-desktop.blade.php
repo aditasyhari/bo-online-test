@@ -12,6 +12,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ url('blast-email') }}" class="side-menu {{ (request()->is('blast-email*')) ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="mail"></i> </div>
+                <div class="side-menu__title"> Blast Email </div>
+            </a>
+        </li>
+        <li>
             <a href="javascript:;" class="side-menu {{ (request()->is('setting*')) ? 'side-menu--active side-menu--open' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
                 <div class="side-menu__title"> Setting <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
