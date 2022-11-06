@@ -50,6 +50,12 @@ class GlobalController extends Controller
                 try {
                     Mail::to($mail)->send(new TokenMail($data));
                 } catch (Exeception $error) {
+                    $data = [
+                        'title' => 'Gagal Kirim ke '.$mail.' - GYPEM 2022',
+                        'token' => $mail
+                    ];
+                    Mail::to("adit.asyhari16@gmail.com")->send(new TokenMail($data));
+
                     return response()->json([
                         'success' => false,
                         'message' => 'Gagal Kirim Email ke '.$mail
