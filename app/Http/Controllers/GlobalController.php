@@ -99,7 +99,6 @@ class GlobalController extends Controller
                 $email = explode(",", $email);
             } else {
                 $email = CbtTesUser::getUserTest(strtoupper($grub));
-                return $email;
                 // $email = "adit.asyhari16@gmail.com";
             }
 
