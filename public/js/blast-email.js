@@ -67,4 +67,74 @@ $(document).ready(function() {
             });
         },
     });
+
+
+    var formResult = $("#form-blast-result");
+
+    $("#btn-submit-result").on("click", function() {
+        loadingStart();
+        let formValid = (formResult.valid());
+        if (formValid == false) {
+            loadingEnd();
+        } else {
+            formResult.submit();
+        }
+    });
+
+    formResult.validate({
+        validClass: "success",
+        rules: {
+            olimpiade: {
+                required: true,
+            },
+            link: {
+                required: true,
+            },
+        },
+        highlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function(element) {
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        submitHandler: function(form) {
+            $("#btn-submit-result").prop('disabled', true);
+
+            var formData = new FormData(form);
+
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "blast-email/blast-email-hasil-olimpiade",
+                data: formData,
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                beforeSend: function() {},
+                tryCount: 0,
+                retryLimit: 3,
+                success: function(resp) {
+                    loadingEnd();
+                    if (resp.success == true) {
+                        swalSuccess(resp.message);
+                    } else {
+                        swalWarning(resp.message);
+                    }
+
+                    $("#btn-submit-result").prop('disabled', false);
+                },
+                error: function(xhr, resp, errorthrown) {
+                    loadingEnd();
+                    swalError('Gagal Kirim Email');
+                    $("#btn-submit-result").prop('disabled', false);
+                },
+            });
+        },
+    });
+
 });

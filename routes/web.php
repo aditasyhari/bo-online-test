@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     // blast email
     Route::get('blast-email', [GlobalController::class, 'blastEmail']);
     Route::post('blast-email/blast-email-token', [GlobalController::class, 'blastEmailToken']);
+    Route::post('blast-email/blast-email-hasil-olimpiade', [GlobalController::class, 'blastEmailHasil']);
     
     // user
     Route::get('setting/user-bo', [UserController::class, 'userBo']);
