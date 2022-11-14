@@ -103,7 +103,7 @@ class GlobalController extends Controller
             }
 
             $data = [
-                'title' => 'Daftar Pemenang NESO - GYPEM 2022',
+                'title' => 'Daftar Pemenang '.$olimpiade,
                 'link' => $link,
                 'olimpiade' => $olimpiade
             ];

@@ -286,7 +286,7 @@ table, td { color: #000000; } #u_body a { color: #363675; text-decoration: none;
       <td style="overflow-wrap:break-word;word-break:break-word;padding:19px 33px 40px;font-family:'Open Sans',sans-serif;" align="left">
         
   <div style="color: #272362; line-height: 140%; text-align: center; word-wrap: break-word;">
-    <p style="line-height: 140%; font-size: 14px;"><span style="font-size: 24px; line-height: 33.6px;">Sampai bertemu pada olimpiade berikutnya.</span></p>
+    <p style="line-height: 140%; font-size: 14px;"><span style="font-size: 24px; line-height: 33.6px;">Sampai jumpa pada event berikutnya.</span></p>
   </div>
 
       </td>

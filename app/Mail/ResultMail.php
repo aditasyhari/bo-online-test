@@ -28,6 +28,6 @@ class ResultMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Hasil Olimpiade NESO GYPEM')->view('mail.hasil')->with('data', $this->data);
+        return $this->subject('Hasil Olimpiade GYPEM')->view('mail.hasil')->with('data', $this->data);
     }
 }
