@@ -12,6 +12,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ url('claim') }}" class="side-menu {{ (request()->is('claim*')) ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="check-circle"></i> </div>
+                <div class="side-menu__title"> User Claim </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ url('blast-email') }}" class="side-menu {{ (request()->is('blast-email*')) ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="mail"></i> </div>
                 <div class="side-menu__title"> Blast Email </div>

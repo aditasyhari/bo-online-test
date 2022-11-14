@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClaimController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // dashboard
     Route::get('dashboard', [GlobalController::class, 'dashboard']);
+
+    // claim
+    Route::get('claim', [ClaimController::class, 'index']);
+    Route::post('claim-data', [ClaimController::class, 'listData']);
+    Route::post('claim-reject', [ClaimController::class, 'reject']);
+    Route::post('claim-validasi', [ClaimController::class, 'validasi']);
 
     // blast email
     Route::get('blast-email', [GlobalController::class, 'blastEmail']);
