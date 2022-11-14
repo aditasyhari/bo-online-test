@@ -155,7 +155,7 @@ function loadDataTable()
             {
                 targets: -4,
                 render: function (data, type, full, meta) {
-                  let status = intval(full['status']);
+                  let status = parseInt(full['status']);
                   let output;
                   switch(status) {
                     case 0:
