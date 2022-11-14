@@ -184,7 +184,7 @@ function loadDataTable()
                 targets: -2,
                 render: function (data, type, full, meta) {
                   let bukti = full['bukti'];
-                  var output = "<a class='text-theme-4 mr-4' href='"+url_lokal+"/public/uploads/"+bukti+"' target='_blank'> Lihat Bukti </a>";
+                  var output = "<a class='text-theme-4' href='https://claim.gypem.com/public/uploads/"+bukti+"' target='_blank'> Lihat Bukti </a>";
   
                   return output;
                 }
