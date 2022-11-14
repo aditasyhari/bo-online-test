@@ -124,7 +124,7 @@ function loadDataTable()
     });
 
     $('#table-data').DataTable({
-        destroy: false,
+        destroy: true,
         processing: true,
         serverSide: true,
         ordering: false,
