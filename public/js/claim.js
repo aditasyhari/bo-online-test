@@ -1,21 +1,124 @@
 $(document).ready(function() {
     var selectorTable = $('#table-data');
+    var formUpdateData = $("#form-edit-data");
 
     loadDataTable();
 
-    // $('#table-data tbody').on('click', 'tr td a.btnDetailData', function () {
-    //     const row = $('#table-data').DataTable().row( $(this).parents('tr') ).data();
+    $('#table-data tbody').on('click', 'tr td a.btnDetailData', function () {
+        const row = $('#table-data').DataTable().row( $(this).parents('tr') ).data();
+        $('#claim-id').val(row.id);
+        $('#detail-alamat').html(row.alamat);
+        $('#detail-note').html(row.note);
+
+        let rowData = '';
+        // let $select = document.querySelector('#add-claim');
+        // let optionData = `<option value="a">Paket A</option>
+        //                 <option value="b">Paket B</option>
+        //                 <option value="c">Paket C</option>
+        //                 <option value="d">Paket D</option>
+        //                 <option value="bonus">Paket Bonus</option>`;
+        // $select.innerHTML = optionData;
+        // let $options = Array.from($select.options);
+
+        $.each(row.detail_claim, function(index, value) {
+            let harga = formatRupiah(''+value.harga, 'Rp ');
+            let paket = value.paket.toUpperCase();
+            let keterangan = '';
+
+            // let optionToSelect = $options.find(item => item.text == 'Paket '+paket);
+            // optionToSelect.selected = true;
+
+            switch(paket) {
+                case 'A':
+                    keterangan = "E-Piagam Penghargaan";
+                    break;
+                case 'B':
+                    keterangan = "Piagam Penghargaan dan Sertifikat Cetak";
+                    break;
+                case 'C':
+                    keterangan = "Piagam & Sertifikat Cetak + Medali";
+                    break;
+                case 'D':
+                    keterangan = "E-Piagam + Piagam & Sertifikat Cetak + Medali";
+                    break;
+                case 'BONUS':
+                    keterangan = "E-Piagam + Piagam & Sertifikat Cetak + Medali + Kaos + Topi + Tote Bag";
+                    break;
+            }
+
+            rowData += `<tr>
+                <td>${index + 1}</td>
+                <td>${value.nama_tes}</td>
+                <td>${harga}</td>
+                <td>${paket}</td>
+                <td>${keterangan}</td>
+            </tr>`;
+        });
     
-    //     let rowData = '';
-    //     $.each(row.detail_claim, function(index, value) {
-    //         rowData += `<tr>
-    //             <td>${index + 1}</td>
-    //             <td>${value.nip}</td>
-    //         </tr>`;
-    //     });
-    
-    //     $('#table-detail tbody').html(rowData);
-    // });
+        $('#table-detail tbody').html(rowData);
+    });
+
+    formUpdateData.validate({
+        validClass: "success",
+        rules: {
+            // add_item: {
+            //     required: true,
+            // },
+            alamat: {
+                required: true,
+            }
+        },
+        highlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        success: function(element) {
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        submitHandler: function(form) {
+            $("#btn-simpan-update-data").prop('disabled', true);
+            $("#btn-simpan-update-data").html('<i class="fa fa-spinner"></i> Processing...');
+
+            var formData = new FormData(form);
+
+            $.ajax({
+                type: "POST",
+                url: "claim-update-data",
+                data: formData,
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                beforeSend: function() {},
+                tryCount: 0,
+                retryLimit: 3,
+                success: function(resp) {
+                    loadingEnd();
+                    if (resp.success == true) {
+                        reloadDataTable(selectorTable);
+                        swalSuccess(resp.message);
+                        closeModal();
+                    } else {
+                        swalWarning(resp.message);
+                    }
+
+                    $("#btn-simpan-update-data").prop('disabled', false);
+                    $("#btn-simpan-update-data").html('Update');
+                },
+                error: function(xhr, textstatus, errorthrown) {
+                    loadingEnd();
+                    if (textstatus == "timeout") {
+                        this.tryCount++;
+                        if (this.tryCount <= this.retryLimit) {
+                            $.ajax(this);
+                        }
+                    } else {
+                        swalError('Something went wrong!');
+                    }
+                    $("#btn-simpan-update-data").prop('disabled', false);
+                    $("#btn-simpan-update-data").html('Update');
+                },
+            });
+        },
+    });
 
     selectorTable.on('click', '.btnRejectData', function() {
         id = $(this).data('id');
@@ -140,6 +243,8 @@ function loadDataTable()
             { data: 'wa' },
             { data: 'email' },
             { data: 'status' },
+            { data: 'item' },
+            { data: 'ongkir' },
             { data: 'total' },
             { data: 'bukti' },
             { data: '', searchable: false }
@@ -153,7 +258,7 @@ function loadDataTable()
         },
         columnDefs: [
             {
-                targets: -4,
+                targets: -6,
                 render: function (data, type, full, meta) {
                   let status = parseInt(full['status']);
                   let output;
@@ -170,6 +275,22 @@ function loadDataTable()
                   }
   
                   return output;
+                }
+            },
+            {
+                targets: -5,
+                render: function (data, type, full, meta) {
+                  let item = full['item'];
+  
+                  return formatRupiah(''+item, 'Rp ');
+                }
+            },
+            {
+                targets: -4,
+                render: function (data, type, full, meta) {
+                  let ongkir = full['ongkir'];
+  
+                  return formatRupiah(''+ongkir, 'Rp ');
                 }
             },
             {
@@ -196,7 +317,7 @@ function loadDataTable()
               render: function (data, type, full, meta) {
                 const id = full['id'];
                 var btnAction = "<div class='flex justify-center items-center'>";
-                btnAction += "<a data-id='"+id+"' class='btnDetailData button flex items-center bg-theme-5 mr-3' href='javascript:;'> Detail </a>";
+                btnAction += "<a data-id='"+id+"' class='btnDetailData button flex items-center bg-theme-5 mr-3' data-toggle='modal' data-target='#modal-detail-data' href='javascript:;'> Detail </a>";
                 btnAction += "<a data-id='"+id+"' class='btnValidData button flex items-center bg-theme-3 text-theme-2 mr-3' href='javascript:;'> Validasi </a>";
                 btnAction += "<a data-id='"+id+"' class='btnRejectData button flex items-center bg-theme-6 text-theme-2 mr-3' href='javascript:;'> Reject </a>";
                 btnAction += "</div>";

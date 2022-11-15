@@ -76,6 +76,13 @@ $(document).ready(function() {
 
     $(".input_number").attr("onkeypress", "return isNumber(event)");
 
+    $(".text-number").on("keyup", function() {
+        let format = formatRupiah($(this).val(), 'Rp ');
+        $(this).val(format);
+    });
+
+    $('.select2').select2();
+
     $("#logout").on("click", function() {
         loadingStart();
         $.ajaxSetup({

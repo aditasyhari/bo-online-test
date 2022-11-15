@@ -32,6 +32,8 @@
                 <th class="border-b-2 whitespace-no-wrap">NO. WA</th>
                 <th class="border-b-2 whitespace-no-wrap">EMAIL</th>
                 <th class="border-b-2 whitespace-no-wrap">STATUS</th>
+                <th class="border-b-2 whitespace-no-wrap">ITEM</th>
+                <th class="border-b-2 whitespace-no-wrap">ONGKIR</th>
                 <th class="border-b-2 whitespace-no-wrap">TOTAL</th>
                 <th class="border-b-2 whitespace-no-wrap">BUKTI</th>
                 <th class="border-b-2 whitespace-no-wrap"></th>
@@ -40,6 +42,65 @@
         <tbody>
         </tbody>
     </table>
+</div>
+
+
+<!-- modal detail -->
+<div class="modal" id="modal-detail-data">
+    <div class="modal__content modal__content--xl pb-3">
+        <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
+            <h2 class="font-medium text-base mr-auto">
+                Detail Klaim
+            </h2>
+        </div>
+        <div class="p-5">
+            <table id="table-detail" class="table w-full">
+                <thead>
+                    <tr>
+                        <th class="border-b-2 text-center whitespace-no-wrap">#</th>
+                        <th class="border-b-2 whitespace-no-wrap">OLIMPIADE</th>
+                        <th class="border-b-2 whitespace-no-wrap">HARGA</th>
+                        <th class="border-b-2 whitespace-no-wrap">PAKET</th>
+                        <th class="border-b-2 whitespace-no-wrap">KETERANGAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="w-full">
+            <form class="bg-white rounded px-8 pt-6 pb-8 mb-4" id="form-edit-data">
+                <!-- <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Tambah Item
+                    </label>
+                    <select class="select2 w-full shadow" id="add-claim" name="add_item[]" multiple="multiple" required>
+                        
+                    </select>
+                </div> -->
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Alamat
+                    </label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="detail-alamat" name="alamat" cols="30" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Catatan
+                    </label>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="detail-note" name="note" cols="30" rows="3"></textarea>
+                </div>
+                <div class="flex items-center">
+                    <input type="hidden" name="id" id="claim-id">
+                    <button class="mr-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" id="btn-simpan-update-data">
+                        Update
+                    </button>
+                    <button type="button" data-dismiss="modal" class="button 2-48 border text-gray-700 mr-1 btn-tutup-modal">Tutup</button>
+                </div>
+            </form>  
+        </div>  
+        
+    </div>
 </div>
 
 @endsection
