@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     // claim
     Route::get('claim', [ClaimController::class, 'index']);
     Route::post('claim-data', [ClaimController::class, 'listData']);
+    Route::post('claim-total-valid', [ClaimController::class, 'totalValid']);
     Route::post('claim-update-data', [ClaimController::class, 'update']);
     Route::post('claim-reject', [ClaimController::class, 'reject']);
     Route::post('claim-validasi', [ClaimController::class, 'validasi']);

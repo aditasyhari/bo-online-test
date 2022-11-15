@@ -59,6 +59,24 @@ class ClaimController extends Controller
         }
     }
 
+    public function totalValid(Request $request)
+    {
+        if($request->ajax()) {
+            $total_user = ClaimUser::where('status', 1)->count();
+            $total_uang = ClaimUser::where('status', 1)->sum('total');
+            $data = [
+                'total_user' => $total_user,
+                'total_uang' => $total_uang
+            ];
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil get data',
+                'data' => $data
+            ], 200);
+        }
+    }
+
     public function update(Request $request)
     {
         if($request->ajax()) {

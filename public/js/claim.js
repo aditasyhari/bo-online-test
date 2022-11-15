@@ -150,6 +150,20 @@ $(document).ready(function() {
                         loadingStart();
                     },
                     success: function(resp) {
+                        $.ajax({
+                            type: "POST",
+                            url: "claim-total-valid",
+                            dataType: "JSON",
+                            processData: false,
+                            contentType: false,
+                            success: function(resp) {
+                                let total_uang = formatRupiah(''+resp.data.total_uang, 'Rp ');
+                                $('#total-valid').html(resp.data.total_user+' Data Valid ('+total_uang+')');
+                            },
+                            error: function(xhr, textstatus, errorthrown) {
+                            },
+                        });
+                        
                         loadingEnd();
                         if (resp.success == true) {
                             reloadDataTable(selectorTable);
@@ -198,6 +212,20 @@ $(document).ready(function() {
                         loadingStart();
                     },
                     success: function(resp) {
+                        $.ajax({
+                            type: "POST",
+                            url: "claim-total-valid",
+                            dataType: "JSON",
+                            processData: false,
+                            contentType: false,
+                            success: function(resp) {
+                                let total_uang = formatRupiah(''+resp.data.total_uang, 'Rp ');
+                                $('#total-valid').html(resp.data.total_user+' Data Valid ('+total_uang+')');
+                            },
+                            error: function(xhr, textstatus, errorthrown) {
+                            },
+                        });
+
                         loadingEnd();
                         if (resp.success == true) {
                             reloadDataTable(selectorTable);
@@ -326,5 +354,19 @@ function loadDataTable()
               }
             }
         ],
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "claim-total-valid",
+        dataType: "JSON",
+        processData: false,
+        contentType: false,
+        success: function(resp) {
+            let total_uang = formatRupiah(''+resp.data.total_uang, 'Rp ');
+            $('#total-valid').html(resp.data.total_user+' Data Valid ('+total_uang+')');
+        },
+        error: function(xhr, textstatus, errorthrown) {
+        },
     });
 }
