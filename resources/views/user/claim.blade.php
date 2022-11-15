@@ -106,5 +106,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('js/claim.js') }}"></script>
+<script src="{{ asset('js/claim.js'. '?time=' . date("Ymdhisu")) }}"></script>
 @endsection
