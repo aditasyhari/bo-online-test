@@ -23,6 +23,12 @@ class ClaimController extends Controller
         return view('user.claim-epiagam', compact('propinsi'));
     }
 
+    public function medali()
+    {
+        $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
+        return view('user.claim-medali', compact('propinsi'));
+    }
+
     public function listData(Request $request)
     {
         if($request->ajax()) {
@@ -61,6 +67,38 @@ class ClaimController extends Controller
             ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
             ->where('claim_user.status', 1)
             ->whereIn('paket', ['a','d','bonus'])
+            ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
+            ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
+            ->orderBy('claim_user_detail.id', 'desc')
+            ->get();
+
+            $data = DataTables::of($data)->addIndexColumn()->make(true);
+
+            return $data;
+        }
+    }
+
+    public function listDataMedali(Request $request)
+    {
+        if($request->ajax()) {
+            $grub = $request->filter_grub;
+            $id_propinsi = $request->filter_propinsi;
+            $data = ClaimUserDetail::select(
+                'claim_user_detail.*',
+                'claim_user.nama',
+                'claim_user.wa',
+                'claim_user.email',
+                'cbt_user_grup.grup_nama',
+                // 'cbt_user.user_firstname',
+                'cbt_user.nama_sekolah',
+                'tm_propinsi.nama_propinsi',
+            )
+            ->leftJoin('claim_user', 'claim_user.id', '=', 'claim_user_detail.claim_id')
+            ->leftJoin('cbt_user', 'cbt_user.user_id', '=', 'claim_user.user_id')
+            ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
+            ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
+            ->where('claim_user.status', 1)
+            ->whereIn('paket', ['c','d','bonus'])
             ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
             ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
             ->orderBy('claim_user_detail.id', 'desc')

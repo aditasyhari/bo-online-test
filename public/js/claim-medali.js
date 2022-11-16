@@ -24,7 +24,7 @@ function loadDataTable()
         mark: true,
         ajax: {
             type: 'POST',
-            url: "/claim-data-epiagam",
+            url: "/claim-data-medali",
             data: {
                 filter_grub: $('#select-filter-grub option:selected').val(),
                 filter_propinsi: $('#select-filter-propinsi option:selected').val()

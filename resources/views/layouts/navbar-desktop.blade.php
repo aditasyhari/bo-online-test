@@ -29,6 +29,12 @@
                         <div class="side-menu__title"> Valid E-Piagam </div>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('claim-medali') }}" class="side-menu {{ (request()->is('claim-medali*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Valid Medali </div>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

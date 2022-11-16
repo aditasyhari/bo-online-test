@@ -30,9 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
     // claim
     Route::get('claim-all', [ClaimController::class, 'index']);
     Route::get('claim-epiagam', [ClaimController::class, 'epiagam']);
+    Route::get('claim-medali', [ClaimController::class, 'medali']);
     Route::post('claim-data', [ClaimController::class, 'listData']);
     Route::post('claim-data-epiagam', [ClaimController::class, 'listDataEpiagam']);
-    
+    Route::post('claim-data-medali', [ClaimController::class, 'listDataMedali']);
+
     Route::post('claim-total', [ClaimController::class, 'total']);
     Route::post('claim-update-data', [ClaimController::class, 'update']);
     Route::post('claim-reject', [ClaimController::class, 'reject']);
