@@ -13,10 +13,18 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('claim') }}" class="side-menu {{ (request()->is('claim*')) ? 'side-menu--active' : '' }}">
-                <div class="side-menu__icon"> <i data-feather="home"></i> </div>
-                <div class="side-menu__title"> User Claim </div>
+            <a href="javascipt:;" class="side-menu {{ (request()->is('claim*')) ? 'side-menu--active side-menu--open' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="check-circle"></i> </div>
+                <div class="side-menu__title"> User Claim <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
             </a>
+            <ul class="">
+                <li>
+                    <a href="{{ url('claim-all') }}" class="side-menu {{ (request()->is('claim-all*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> All </div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="javascript:;" class="menu {{ (request()->is('setting*')) ? 'menu--active menu--open' : '' }}">
