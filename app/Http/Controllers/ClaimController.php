@@ -20,8 +20,15 @@ class ClaimController extends Controller
     public function listData(Request $request)
     {
         if($request->ajax()) {
-            $data = ClaimUser::with('detailClaim')->orderBy('id', 'desc')->get();
-            $data = DataTables::of($data)->addIndexColumn()->make(true);
+            $status = $request->filter_status;
+            $data = ClaimUser::with('detailClaim');
+
+            if($status !== "" && $status !== null) {
+                $data->where('status', $status);
+            }
+
+            $result = $data->orderBy('id', 'desc')->get();
+            $data = DataTables::of($result)->addIndexColumn()->make(true);
 
             return $data;
         }

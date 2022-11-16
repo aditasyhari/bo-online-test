@@ -26,6 +26,18 @@
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-6 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-reject"> 0 Data Reject </span></div>
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-7 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-pending"> 0 Data Pending (Rp 0) </span></div>
 </div>
+<div class="grid grid-rows-1 grid-flow-col gap-4">
+    <div class="">
+        <select class="select2 w-full select-filter-status" id="select-filter-status">
+            <option selected value="">Semua Status</option>
+            <option value="0">Pending</option>
+            <option value="1">Valid</option>
+            <option value="2">Reject</option>
+        </select>
+    </div>
+    <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 text-white"></div>
+    <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 text-white"></div>
+</div>
 <!-- BEGIN: Datatable -->
 <div class="intro-y datatable-wrapper box p-5 mt-5">
     <table id="table-data" class="table table-report table-report--bordered display datatable w-full">

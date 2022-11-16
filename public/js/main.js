@@ -1,5 +1,7 @@
 let url_lokal = window.location.origin;
 
+$(".select2").select2();
+
 function formatRupiah(angka, prefix) 
 {
     var number_string = angka.replace(/[^,\d]/g, "").toString(),
@@ -169,8 +171,9 @@ function setNotif(message, heading = "Notification") {
 
 function setValueFilter(className) {
     $('.select-' + className).on('change', function() {
-        var valOption = $(this).children("option:selected").val();
-        $(this).parent().find('[name=value-' + className + ']').val(valOption);
+        // var valOption = $(this).children("option:selected").val();
+        // $(this).parent().find('[name=value-' + className + ']').val(valOption);
+        loadingStart();
         loadDataTable();
     });
 }

@@ -3,6 +3,7 @@ $(document).ready(function() {
     var formUpdateData = $("#form-edit-data");
 
     loadDataTable();
+    setValueFilter("filter-status");
 
     $('#table-data tbody').on('click', 'a.btnDetailData', function () {
         const row = $('#table-data').DataTable().row( $(this).parents('tr') ).data();
@@ -270,6 +271,9 @@ function loadDataTable()
         ajax: {
             type: 'POST',
             url: "/claim-data",
+            data: {
+                filter_status: $('#select-filter-status option:selected').val()
+            }
         }, // JSON file to add data
         columns: [
             { data: 'nama' },
@@ -282,12 +286,9 @@ function loadDataTable()
             { data: 'bukti' },
             { data: '', searchable: false }
         ],
-        language: {
-            "infoFiltered": "",
-            "processing": ""
-        },
         drawCallback: function(settings) {
             feather.replace();
+            loadingEnd();
         },
         columnDefs: [
             {
