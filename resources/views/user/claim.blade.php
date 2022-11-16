@@ -21,13 +21,16 @@
         Data Klaim User
     </h2>
 </div>
-<div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-1 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-valid"> 0 Data Valid (Rp 0) </span></div>
+<div class="grid grid-rows-1 grid-flow-col gap-4">
+    <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-1 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-valid"> 0 Data Valid (Rp 0) </span></div>
+    <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-6 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-reject"> 0 Data Reject </span></div>
+    <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-7 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-pending"> 0 Data Pending (Rp 0) </span></div>
+</div>
 <!-- BEGIN: Datatable -->
 <div class="intro-y datatable-wrapper box p-5 mt-5">
     <table id="table-data" class="table table-report table-report--bordered display datatable w-full">
         <thead>
             <tr>
-                <th class="border-b-2 text-center whitespace-no-wrap">#</th>
                 <th class="border-b-2 whitespace-no-wrap">NAMA</th>
                 <th class="border-b-2 whitespace-no-wrap">NO. WA</th>
                 <th class="border-b-2 whitespace-no-wrap">EMAIL</th>

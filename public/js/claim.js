@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     loadDataTable();
 
-    $('#table-data tbody').on('click', 'tr td a.btnDetailData', function () {
+    $('#table-data tbody').on('click', 'a.btnDetailData', function () {
         const row = $('#table-data').DataTable().row( $(this).parents('tr') ).data();
         $('#claim-id').val(row.id);
         $('#detail-alamat').html(row.alamat);
@@ -152,13 +152,16 @@ $(document).ready(function() {
                     success: function(resp) {
                         $.ajax({
                             type: "POST",
-                            url: "claim-total-valid",
+                            url: "claim-total",
                             dataType: "JSON",
                             processData: false,
                             contentType: false,
                             success: function(resp) {
-                                let total_uang = formatRupiah(''+resp.data.total_uang, 'Rp ');
-                                $('#total-valid').html(resp.data.total_user+' Data Valid ('+total_uang+')');
+                                let total_uang_valid = formatRupiah(''+resp.data.valid.total_uang, 'Rp ');
+                                let total_uang_pending = formatRupiah(''+resp.data.pending.total_uang, 'Rp ');
+                                $('#total-valid').html(resp.data.valid.total_user+' Data Valid ('+total_uang_valid+')');
+                                $('#total-pending').html(resp.data.pending.total_user+' Data Pending ('+total_uang_pending+')');
+                                $('#total-reject').html(resp.data.reject.total_user+' Data Reject');
                             },
                             error: function(xhr, textstatus, errorthrown) {
                             },
@@ -214,13 +217,16 @@ $(document).ready(function() {
                     success: function(resp) {
                         $.ajax({
                             type: "POST",
-                            url: "claim-total-valid",
+                            url: "claim-total",
                             dataType: "JSON",
                             processData: false,
                             contentType: false,
                             success: function(resp) {
-                                let total_uang = formatRupiah(''+resp.data.total_uang, 'Rp ');
-                                $('#total-valid').html(resp.data.total_user+' Data Valid ('+total_uang+')');
+                                let total_uang_valid = formatRupiah(''+resp.data.valid.total_uang, 'Rp ');
+                                let total_uang_pending = formatRupiah(''+resp.data.pending.total_uang, 'Rp ');
+                                $('#total-valid').html(resp.data.valid.total_user+' Data Valid ('+total_uang_valid+')');
+                                $('#total-pending').html(resp.data.pending.total_user+' Data Pending ('+total_uang_pending+')');
+                                $('#total-reject').html(resp.data.reject.total_user+' Data Reject');
                             },
                             error: function(xhr, textstatus, errorthrown) {
                             },
@@ -266,7 +272,6 @@ function loadDataTable()
             url: "/claim-data",
         }, // JSON file to add data
         columns: [
-            { data: 'DT_RowIndex', searchable: false },
             { data: 'nama' },
             { data: 'wa' },
             { data: 'email' },
@@ -344,11 +349,24 @@ function loadDataTable()
               orderable: false,
               render: function (data, type, full, meta) {
                 const id = full['id'];
-                var btnAction = "<div class='flex justify-center items-center'>";
-                btnAction += "<a data-id='"+id+"' class='btnDetailData button flex items-center bg-theme-5 mr-3' data-toggle='modal' data-target='#modal-detail-data' href='javascript:;'> Detail </a>";
-                btnAction += "<a data-id='"+id+"' class='btnValidData button flex items-center bg-theme-3 text-theme-2 mr-3' href='javascript:;'> Validasi </a>";
-                btnAction += "<a data-id='"+id+"' class='btnRejectData button flex items-center bg-theme-6 text-theme-2 mr-3' href='javascript:;'> Reject </a>";
-                btnAction += "</div>";
+
+                var btnAction = `
+                <div class="dropdown relative"> <button class="dropdown-toggle button inline-block bg-theme-1 text-white">Action</button>
+                    <div class="dropdown-box mt-12 absolute w-40 top-0 right-0 z-20">
+                        <div class="dropdown-box__content box p-2">
+                            <a href="javascript:;" data-toggle='modal' data-target='#modal-detail-data' data-id='`+id+`' class="btnDetailData flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> 
+                                <i data-feather="external-link" class="w-4 h-4 text-gray-700 mr-2"></i> Detail 
+                            </a> 
+                            <a href="javascript:;" data-id='`+id+`' class="btnValidData flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> 
+                                <i data-feather="check-circle" style='color: #4eea08;' class="w-4 h-4 text-gray-700 mr-2"></i> Valid 
+                            </a> 
+                            <a href="javascript:;" data-id='`+id+`' class="btnRejectData flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md"> 
+                                <i data-feather="x-circle" class="w-4 h-4 text-theme-6 mr-2"></i> Reject 
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+                `;
 
                 return btnAction;
               }
@@ -358,13 +376,16 @@ function loadDataTable()
 
     $.ajax({
         type: "POST",
-        url: "claim-total-valid",
+        url: "claim-total",
         dataType: "JSON",
         processData: false,
         contentType: false,
         success: function(resp) {
-            let total_uang = formatRupiah(''+resp.data.total_uang, 'Rp ');
-            $('#total-valid').html(resp.data.total_user+' Data Valid ('+total_uang+')');
+            let total_uang_valid = formatRupiah(''+resp.data.valid.total_uang, 'Rp ');
+            let total_uang_pending = formatRupiah(''+resp.data.pending.total_uang, 'Rp ');
+            $('#total-valid').html(resp.data.valid.total_user+' Data Valid ('+total_uang_valid+')');
+            $('#total-pending').html(resp.data.pending.total_user+' Data Pending ('+total_uang_pending+')');
+            $('#total-reject').html(resp.data.reject.total_user+' Data Reject');
         },
         error: function(xhr, textstatus, errorthrown) {
         },

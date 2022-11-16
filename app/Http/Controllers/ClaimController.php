@@ -59,14 +59,26 @@ class ClaimController extends Controller
         }
     }
 
-    public function totalValid(Request $request)
+    public function total(Request $request)
     {
         if($request->ajax()) {
-            $total_user = ClaimUser::where('status', 1)->count();
-            $total_uang = ClaimUser::where('status', 1)->sum('total');
-            $data = [
-                'total_user' => $total_user,
-                'total_uang' => $total_uang
+            $total_user_valid = ClaimUser::where('status', 1)->count();
+            $total_uang_valid = ClaimUser::where('status', 1)->sum('total');
+            $total_user_reject = ClaimUser::where('status', 2)->count();
+            $total_uang_reject = ClaimUser::where('status', 2)->sum('total');
+            $total_user_pending = ClaimUser::where('status', 0)->count();
+            $total_uang_pending = ClaimUser::where('status', 0)->sum('total');
+            $data['pending'] = [
+                'total_user' => $total_user_pending,
+                'total_uang' => $total_uang_pending
+            ];
+            $data['valid'] = [
+                'total_user' => $total_user_valid,
+                'total_uang' => $total_uang_valid
+            ];
+            $data['reject'] = [
+                'total_user' => $total_user_reject,
+                'total_uang' => $total_uang_reject
             ];
 
             return response()->json([
