@@ -38,6 +38,20 @@
             </ul>
         </li>
         <li>
+            <a href="javascipt:;" class="side-menu {{ (request()->is('generator*')) ? 'side-menu--active side-menu--open' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="file"></i> </div>
+                <div class="side-menu__title"> Generator <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{ url('generator-piagam') }}" class="side-menu {{ (request()->is('generator-piagam*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Piagam </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a href="{{ url('blast-email') }}" class="side-menu {{ (request()->is('blast-email*')) ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="mail"></i> </div>
                 <div class="side-menu__title"> Blast Email </div>

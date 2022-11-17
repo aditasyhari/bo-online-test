@@ -5,6 +5,7 @@ use App\Http\Controllers\GlobalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClaimController;
+use App\Http\Controllers\GeneratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('claim-update-data', [ClaimController::class, 'update']);
     Route::post('claim-reject', [ClaimController::class, 'reject']);
     Route::post('claim-validasi', [ClaimController::class, 'validasi']);
+
+    // generator
+    Route::get('generator-piagam', [GeneratorController::class, 'piagam']);
+    Route::post('generator-piagam', [GeneratorController::class, 'generatePiagam']);
+
 
     // blast email
     Route::get('blast-email', [GlobalController::class, 'blastEmail']);
