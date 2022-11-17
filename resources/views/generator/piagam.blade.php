@@ -42,6 +42,7 @@
                         <option value="peringkat-10">Peringkat 10</option>
                         <option value="medali-emas">Medali Emas</option>
                         <option value="medali-silver">Medali Silver</option>
+                        <option value="medali-bronze">Medali Bronze</option>
                     </select>
                 </div>
             </div>
@@ -79,6 +80,7 @@
                         <option value="Chemistry">Chemistry</option>
                         <option value="Physics">Physics</option>
                         <option value="History">History</option>
+                        <option value="Geography">Geography</option>
                         <option value="Economy">Economy</option>
                         <option value="natural sciences">Natural Sciences</option>
                         <option value="Social Sciences">Social Sciences</option>
