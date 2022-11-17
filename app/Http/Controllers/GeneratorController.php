@@ -22,10 +22,9 @@ class GeneratorController extends Controller
             $provinsi   = strtoupper($request->propinsi);
             $olimpiade  = strtoupper($request->olimpiade);
             $medali     = strtolower($request->medali);
-            $nomor      = $request->nomor;
 
             $img_name = time().'-'.$nama.'-'.$olimpiade.'.jpg';
-            $img = Image::make(public_path("images/piagam/template/$medali/$nomor.jpg"));  
+            $img = Image::make(public_path("images/piagam/template/$medali.jpg"));  
             $img->text($nama, 1380, 1080, function($font) {  
                 $font->file(public_path('font/arial.ttf'));  
                 $font->size(60);  
@@ -47,12 +46,12 @@ class GeneratorController extends Controller
                 $font->align('left');  
                 $font->valign('left');  
             }); 
-            $img->text($olimpiade, 2075, 1350, function($font) {  
+            $img->text($olimpiade, 1765, 1406, function($font) {  
                 $font->file(public_path('font/arial.ttf'));  
                 $font->size(60);  
                 $font->color('#000000');  
-                $font->align('left');  
-                $font->valign('left');  
+                $font->align('center');  
+                $font->valign('center');  
             });    
     
             $img->save(public_path('images/piagam/generate/'.$img_name)); 

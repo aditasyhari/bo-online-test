@@ -30,26 +30,18 @@
                     <div class="mb-2">Pilih Medali</div>
                     <select class="select2 w-full" id="medali" name="medali" required>
                         <option disabled selected>Pilih</option>
-                        <option value="gold">Gold</option>
-                        <option value="silver">Silver</option>
-                        <option value="perunggu">Perunggu</option>
-                    </select>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 gap-4 row-gap-5 mt-5">
-                <div class="intro-y col-span-12 sm:col-span-3">
-                    <div class="mb-2">Pilih Nomor</div>
-                    <select class="select2 w-full" id="nomor" name="nomor" required>
-                        <option selected disabled>Pilih</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
+                        <option value="juara-1-emas">Juara 1 Gold</option>
+                        <option value="juara-2-silver">Juara 2 Silver</option>
+                        <option value="juara-3-bronze">Juara 3 Bronze</option>
+                        <option value="harapan-1-emas">Harapan 1 Gold</option>
+                        <option value="harapan-2-silver">Harapan 2 Silver</option>
+                        <option value="harapan-3-bronze">Harapan 3 Bronze</option>
+                        <option value="peringkat-7">Peringkat 7</option>
+                        <option value="peringkat-8">Peringkat 8</option>
+                        <option value="peringkat-9">Peringkat 9</option>
+                        <option value="peringkat-10">Peringkat 10</option>
+                        <option value="medali-emas">Medali Emas</option>
+                        <option value="medali-silver">Medali Silver</option>
                     </select>
                 </div>
             </div>
