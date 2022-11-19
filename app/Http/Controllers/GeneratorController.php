@@ -14,6 +14,11 @@ class GeneratorController extends Controller
         return view('generator.piagam', compact('propinsi'));
     }
 
+    public function sertifikat(Request $request) 
+    {
+        return view('generator.sertifikat');
+    }
+
     public function generatePiagam(Request $request)
     {
         if($request->ajax()) {
@@ -63,4 +68,32 @@ class GeneratorController extends Controller
             ], 200);
         }
     }
+
+    public function generateSertifikat(Request $request)
+    {
+        if($request->ajax()) {
+            $nama       = strtoupper($request->nama);
+
+            $nama = strtolower($request->nama);
+            $nama = ucwords($nama);
+            $img_name = time().'.jpg';
+            $img = Image::make(public_path('images/sertifikat/template/certificate-neso.jpg'));  
+            $img->text($nama, 1725, 1100, function($font) {  
+                $font->file(public_path('font/great-vibes-regular.ttf'));  
+                $font->size(230);  
+                $font->color('#093F6D');  
+                $font->align('center');  
+                $font->valign('center');  
+            });   
+    
+            $img->save(public_path('images/sertifikat/generate/'.$img_name)); 
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Generate',
+                'data'    => $img_name
+            ], 200);
+        }
+    }
+
 }

@@ -49,6 +49,12 @@
                         <div class="side-menu__title"> Piagam </div>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('generator-sertifikat') }}" class="side-menu {{ (request()->is('generator-sertifikat*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Sertifikat </div>
+                    </a>
+                </li>
             </ul>
         </li>
         <li>

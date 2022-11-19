@@ -43,7 +43,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     // generator
     Route::get('generator-piagam', [GeneratorController::class, 'piagam']);
+    Route::get('generator-sertifikat', [GeneratorController::class, 'sertifikat']);
     Route::post('generator-piagam', [GeneratorController::class, 'generatePiagam']);
+    Route::post('generator-sertifikat', [GeneratorController::class, 'generateSertifikat']);
 
 
     // blast email
