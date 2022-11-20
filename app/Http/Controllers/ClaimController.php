@@ -89,9 +89,10 @@ class ClaimController extends Controller
                 'claim_user.wa',
                 'claim_user.email',
                 'cbt_user_grup.grup_nama',
-                // 'cbt_user.user_firstname',
                 'cbt_user.nama_sekolah',
                 'tm_propinsi.nama_propinsi',
+                'claim_user.alamat',
+                'claim_user.note',
             )
             ->leftJoin('claim_user', 'claim_user.id', '=', 'claim_user_detail.claim_id')
             ->leftJoin('cbt_user', 'cbt_user.user_id', '=', 'claim_user.user_id')

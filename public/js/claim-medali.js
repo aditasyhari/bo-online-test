@@ -41,10 +41,17 @@ function loadDataTable()
             { data: 'nama_tes' },
             { data: 'nama' },
             { data: 'wa' },
-            { data: 'email' },
-            { data: 'grup_nama' },
-            { data: 'nama_sekolah' },
-            { data: 'nama_propinsi' }
+            { 
+                data: 'nama_sekolah',
+                render: function(data, type, full, meta) {
+                    let grub = full['grup_nama'].toUpperCase();
+                    let nama_sekolah = full['nama_sekolah'];
+                    return '('+grub+') - '+nama_sekolah;
+                }
+            },
+            { data: 'nama_propinsi' },
+            { data: 'alamat' },
+            { data: 'note' },
         ],
         drawCallback: function(settings) {
             feather.replace();
