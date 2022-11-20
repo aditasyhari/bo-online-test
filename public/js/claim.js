@@ -276,6 +276,8 @@ function loadDataTable()
             }
         }, // JSON file to add data
         columns: [
+            { data: '', searchable: false },
+            { data: 'bukti' },
             { data: 'nama' },
             { data: 'wa' },
             { data: 'email' },
@@ -283,8 +285,6 @@ function loadDataTable()
             { data: 'item' },
             { data: 'ongkir' },
             { data: 'total' },
-            { data: 'bukti' },
-            { data: '', searchable: false }
         ],
         drawCallback: function(settings) {
             feather.replace();
@@ -292,7 +292,7 @@ function loadDataTable()
         },
         columnDefs: [
             {
-                targets: -6,
+                targets: -4,
                 render: function (data, type, full, meta) {
                   let status = parseInt(full['status']);
                   let output;
@@ -312,7 +312,7 @@ function loadDataTable()
                 }
             },
             {
-                targets: -5,
+                targets: -3,
                 render: function (data, type, full, meta) {
                   let item = full['item'];
   
@@ -320,7 +320,7 @@ function loadDataTable()
                 }
             },
             {
-                targets: -4,
+                targets: -2,
                 render: function (data, type, full, meta) {
                   let ongkir = full['ongkir'];
   
@@ -328,7 +328,7 @@ function loadDataTable()
                 }
             },
             {
-                targets: -3,
+                targets: -1,
                 render: function (data, type, full, meta) {
                   let total = full['total'];
   
@@ -336,7 +336,7 @@ function loadDataTable()
                 }
             },
             {
-                targets: -2,
+                targets: 1,
                 render: function (data, type, full, meta) {
                   let bukti = full['bukti'];
                   var output = "<a class='text-theme-4' href='https://claim.gypem.com/public/uploads/"+bukti+"' target='_blank'> Lihat Bukti </a>";
@@ -345,7 +345,7 @@ function loadDataTable()
                 }
             },
             {
-              targets: -1,
+              targets: 0,
               title: '',
               orderable: false,
               render: function (data, type, full, meta) {

@@ -43,6 +43,8 @@
     <table id="table-data" class="table table-report table-report--bordered display datatable w-full">
         <thead>
             <tr>
+                <th class="border-b-2 whitespace-no-wrap"></th>
+                <th class="border-b-2 whitespace-no-wrap">BUKTI</th>
                 <th class="border-b-2 whitespace-no-wrap">NAMA</th>
                 <th class="border-b-2 whitespace-no-wrap">NO. WA</th>
                 <th class="border-b-2 whitespace-no-wrap">EMAIL</th>
@@ -50,8 +52,6 @@
                 <th class="border-b-2 whitespace-no-wrap">ITEM</th>
                 <th class="border-b-2 whitespace-no-wrap">ONGKIR</th>
                 <th class="border-b-2 whitespace-no-wrap">TOTAL</th>
-                <th class="border-b-2 whitespace-no-wrap">BUKTI</th>
-                <th class="border-b-2 whitespace-no-wrap"></th>
             </tr>
         </thead>
         <tbody>
