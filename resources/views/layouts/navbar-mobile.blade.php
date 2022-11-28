@@ -1,4 +1,4 @@
-<div class="mobile-menu md:hidden">
+<!-- <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
         <a href="" class="flex mr-auto">
             <img alt="Logo" class="w-6" src="{{ asset('source/dist/images/logo.svg') }}">
@@ -47,4 +47,4 @@
             </ul>
         </li>
     </ul>
-</div>
+</div> -->

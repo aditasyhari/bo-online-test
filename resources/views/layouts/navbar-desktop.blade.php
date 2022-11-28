@@ -24,6 +24,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ url('claim-paket') }}" class="side-menu {{ (request()->is('claim-paket*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Valid Claim Paket</div>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ url('claim-epiagam') }}" class="side-menu {{ (request()->is('claim-epiagam*')) ? 'side-menu--active' : '' }}">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                         <div class="side-menu__title"> Valid E-Piagam </div>

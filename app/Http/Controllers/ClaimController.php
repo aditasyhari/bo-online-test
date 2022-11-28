@@ -17,6 +17,12 @@ class ClaimController extends Controller
         return view('user.claim');
     }
     
+    public function paket()
+    {
+        $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
+        return view('user.claim-paket', compact('propinsi'));
+    }
+
     public function epiagam()
     {
         $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
@@ -41,6 +47,39 @@ class ClaimController extends Controller
 
             $result = $data->orderBy('id', 'desc')->get();
             $data = DataTables::of($result)->addIndexColumn()->make(true);
+
+            return $data;
+        }
+    }
+
+    public function listDataPaket(Request $request)
+    {
+        if($request->ajax()) {
+            $grub = $request->filter_grub;
+            $id_propinsi = $request->filter_propinsi;
+            $paket = $request->filter_paket;
+            $data = ClaimUserDetail::select(
+                'claim_user_detail.*',
+                'claim_user.nama',
+                'claim_user.wa',
+                'claim_user.email',
+                'cbt_user_grup.grup_nama',
+                // 'cbt_user.user_firstname',
+                'cbt_user.nama_sekolah',
+                'tm_propinsi.nama_propinsi',
+            )
+            ->leftJoin('claim_user', 'claim_user.id', '=', 'claim_user_detail.claim_id')
+            ->leftJoin('cbt_user', 'cbt_user.user_id', '=', 'claim_user.user_id')
+            ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
+            ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
+            ->where('claim_user.status', 1)
+            ->when($paket, fn ($sql, $paket) => $sql->where('paket', $paket))
+            ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
+            ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
+            ->orderBy('claim_user_detail.id', 'desc')
+            ->get();
+
+            $data = DataTables::of($data)->addIndexColumn()->make(true);
 
             return $data;
         }
