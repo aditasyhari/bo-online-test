@@ -43,7 +43,7 @@ function loadDataTable()
             { data: 'nama_tes' },
             { data: 'nama' },
             { data: 'wa' },
-            { data: 'email' },
+            { data: 'alamat' },
             { data: 'grup_nama' },
             { data: 'nama_sekolah' },
             { data: 'nama_propinsi' }

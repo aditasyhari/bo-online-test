@@ -60,7 +60,7 @@
                 <th class="border-b-2 whitespace-no-wrap">OLIMPIADE</th>
                 <th class="border-b-2 whitespace-no-wrap">NAMA</th>
                 <th class="border-b-2 whitespace-no-wrap">WA</th>
-                <th class="border-b-2 whitespace-no-wrap">EMAIL</th>
+                <th class="border-b-2 whitespace-no-wrap">ALAMAT</th>
                 <th class="border-b-2 whitespace-no-wrap">GRUB</th>
                 <th class="border-b-2 whitespace-no-wrap">SEKOLAH</th>
                 <th class="border-b-2 whitespace-no-wrap">PROVINSI</th>

@@ -63,6 +63,7 @@ class ClaimController extends Controller
                 'claim_user.nama',
                 'claim_user.wa',
                 'claim_user.email',
+                'claim_user.alamat',
                 'cbt_user_grup.grup_nama',
                 // 'cbt_user.user_firstname',
                 'cbt_user.nama_sekolah',
