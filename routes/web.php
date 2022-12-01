@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\GeneratorController;
+use App\Http\Controllers\OngkirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('setting/user-bo/detail', [UserController::class, 'detailUserBo']);
     Route::post('setting/user-bo/update', [UserController::class, 'updateUserBo']);
     Route::post('setting/user-bo/delete', [UserController::class, 'deleteUserBo']);
+
+    Route::get('setting/ongkir', [OngkirController::class, 'index']);
+    Route::post('setting/ongkir/list', [OngkirController::class, 'listData']);
+    Route::post('setting/ongkir/update', [OngkirController::class, 'update']);
 
     Route::get('setting/user-cbt', [UserController::class, 'user']);
     Route::post('setting/user-cbt/list', [UserController::class, 'userCbtList']);
