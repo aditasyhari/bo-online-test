@@ -6,6 +6,7 @@ use App\Models\ClaimUserDetail;
 use Validator;
 use Exception;
 use DataTables;
+use PDF;
 use DB;
 
 use Illuminate\Http\Request;
@@ -290,6 +291,43 @@ class ClaimController extends Controller
                 ], 500);
             }
         }
+    }
+
+    public function cetakAlamatClaim(Request $request)
+    {
+        $grub = null;
+        $provinsi = null;
+        if($request->grub) {
+            $grub = $request->grub;
+        }
+
+        if($request->provinsi) {
+            $provinsi = $request->provinsi;
+        }
+
+        $list = ClaimUserDetail::select(
+            'claim_user.nama',
+            'claim_user.wa',
+            'tm_kotakab.kotakab',
+            'tm_propinsi.nama_propinsi',
+            'claim_user.alamat',
+        )
+        ->leftJoin('claim_user', 'claim_user.id', '=', 'claim_user_detail.claim_id')
+        ->leftJoin('cbt_user', 'cbt_user.user_id', '=', 'claim_user.user_id')
+        ->leftJoin('tm_kotakab', 'cbt_user.id_kotakab', '=', 'tm_kotakab.id_kotakab')
+        ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
+        ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
+        ->where('claim_user.status', 1)
+        ->where('paket', '!=', 'a')
+        ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
+        ->when($provinsi, fn ($sql, $provinsi) => $sql->where('tm_propinsi.id_propinsi', $provinsi))
+        ->get();
+
+        $data = ['list' => $list];
+
+        $pdf = PDF::loadView('pdf.alamat', $data);
+        $pdf->setPaper('A4');
+        return $pdf->stream();
     }
 
 }

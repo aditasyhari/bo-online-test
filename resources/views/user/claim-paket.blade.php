@@ -28,7 +28,38 @@
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-6 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-reject"> 0 Data Reject </span></div>
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-7 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-pending"> 0 Data Pending (Rp 0) </span></div>
 </div> -->
-<div class="mt-5 grid grid-cols-4 gap-4">
+<div class="mt-5 flex w-2/4">
+    <div class="flex-none w-1/5 mr-3">
+        <a href="{{ url('/claim-data-paket/cetak-alamat') }}" target="_blank" rel="noopener noreferrer" class="button w-100 inline-block bg-theme-1 text-white">Cetak Semua Alamat</a>
+    </div>
+    <div class="flex-auto w-2/5 mr-2">
+        <select class="select2 select-filter-grub" id="select-filter-grub">
+            <option selected value="">Semua Grub</option>
+            <option value="7">SD</option>
+            <option value="5">SMP</option>
+            <option value="6">SMA</option>
+        </select>
+    </div>
+    <div class="flex-auto w-2/5 mr-2">
+        <select class="select2 select-filter-propinsi" id="select-filter-propinsi">
+            <option selected value="">Semua Provinsi</option>
+            @foreach($propinsi as $p)
+                <option value="{{ $p->id_propinsi }}">{{ $p->nama_propinsi }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="flex-auto w-2/5 mr-2">
+        <select class="select2 select-filter-paket" id="select-filter-paket">
+            <option selected value="">Semua Paket</option>
+            <option value="a">A - E-Piagam Penghargaan</option>
+            <option value="b">B - Piagam Penghargaan dan Sertifikat Cetak</option>
+            <option value="c">C - Piagam & Sertifikat Cetak + Medali</option>
+            <option value="d">D - E-Piagam + Piagam & Sertifikat Cetak + Medali</option>
+            <option value="bonus">BONUS - E-Piagam + Piagam & Sertifikat Cetak + Medali + Kaos + Topi + Tote Bag</option>
+        </select>
+    </div>
+</div>
+<!-- <div class="mt-5 grid grid-cols-4 gap-4">
     <select class="select2 select-filter-grub" id="select-filter-grub">
         <option selected value="">Semua Grub</option>
         <option value="7">SD</option>
@@ -50,7 +81,7 @@
         <option value="bonus">BONUS - E-Piagam + Piagam & Sertifikat Cetak + Medali + Kaos + Topi + Tote Bag</option>
     </select>
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 text-white"></div>
-</div>
+</div> -->
 <!-- BEGIN: Datatable -->
 <div class="intro-y datatable-wrapper box p-5 mt-5">
     <table id="table-data" class="table table-report table-report--bordered display datatable w-full">
