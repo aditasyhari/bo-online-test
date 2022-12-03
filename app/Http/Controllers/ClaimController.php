@@ -40,7 +40,8 @@ class ClaimController extends Controller
     {
         if($request->ajax()) {
             $status = $request->filter_status;
-            $data = ClaimUser::with('detailClaim');
+            $olimpiade = DB::table('cbt_konfigurasi')->where('konfigurasi_kode', 'olimpiade_aktif')->pluck('konfigurasi_isi')->first();
+            $data = ClaimUser::with('detailClaim')->where('olimpiade', $olimpiade);
 
             if($status !== "" && $status !== null) {
                 $data->where('status', $status);
@@ -59,6 +60,7 @@ class ClaimController extends Controller
             $grub = $request->filter_grub;
             $id_propinsi = $request->filter_propinsi;
             $paket = $request->filter_paket;
+            $olimpiade = DB::table('cbt_konfigurasi')->where('konfigurasi_kode', 'olimpiade_aktif')->pluck('konfigurasi_isi')->first();
             $data = ClaimUserDetail::select(
                 'claim_user_detail.*',
                 'claim_user.nama',
@@ -75,6 +77,7 @@ class ClaimController extends Controller
             ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
             ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
             ->where('claim_user.status', 1)
+            ->where('claim_user.olimpiade', $olimpiade)
             ->when($paket, fn ($sql, $paket) => $sql->where('paket', $paket))
             ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
             ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
@@ -92,6 +95,7 @@ class ClaimController extends Controller
         if($request->ajax()) {
             $grub = $request->filter_grub;
             $id_propinsi = $request->filter_propinsi;
+            $olimpiade = DB::table('cbt_konfigurasi')->where('konfigurasi_kode', 'olimpiade_aktif')->pluck('konfigurasi_isi')->first();
             $data = ClaimUserDetail::select(
                 'claim_user_detail.*',
                 'claim_user.nama',
@@ -107,6 +111,7 @@ class ClaimController extends Controller
             ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
             ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
             ->where('claim_user.status', 1)
+            ->where('claim_user.olimpiade', $olimpiade)
             ->whereIn('paket', ['a','d','bonus'])
             ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
             ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
@@ -124,6 +129,7 @@ class ClaimController extends Controller
         if($request->ajax()) {
             $grub = $request->filter_grub;
             $id_propinsi = $request->filter_propinsi;
+            $olimpiade = DB::table('cbt_konfigurasi')->where('konfigurasi_kode', 'olimpiade_aktif')->pluck('konfigurasi_isi')->first();
             $data = ClaimUserDetail::select(
                 'claim_user_detail.*',
                 'claim_user.nama',
@@ -140,6 +146,7 @@ class ClaimController extends Controller
             ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
             ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
             ->where('claim_user.status', 1)
+            ->where('claim_user.olimpiade', $olimpiade)
             ->whereIn('paket', ['c','d','bonus'])
             ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
             ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
@@ -187,12 +194,13 @@ class ClaimController extends Controller
     public function total(Request $request)
     {
         if($request->ajax()) {
-            $total_user_valid = ClaimUser::where('status', 1)->count();
-            $total_uang_valid = ClaimUser::where('status', 1)->sum('total');
-            $total_user_reject = ClaimUser::where('status', 2)->count();
-            $total_uang_reject = ClaimUser::where('status', 2)->sum('total');
-            $total_user_pending = ClaimUser::where('status', 0)->count();
-            $total_uang_pending = ClaimUser::where('status', 0)->sum('total');
+            $olimpiade = DB::table('cbt_konfigurasi')->where('konfigurasi_kode', 'olimpiade_aktif')->pluck('konfigurasi_isi')->first();
+            $total_user_valid = ClaimUser::where('status', 1)->where('olimpiade', $olimpiade)->count();
+            $total_uang_valid = ClaimUser::where('status', 1)->where('olimpiade', $olimpiade)->sum('total');
+            $total_user_reject = ClaimUser::where('status', 2)->where('olimpiade', $olimpiade)->count();
+            $total_uang_reject = ClaimUser::where('status', 2)->where('olimpiade', $olimpiade)->sum('total');
+            $total_user_pending = ClaimUser::where('status', 0)->where('olimpiade', $olimpiade)->count();
+            $total_uang_pending = ClaimUser::where('status', 0)->where('olimpiade', $olimpiade)->sum('total');
             $data['pending'] = [
                 'total_user' => $total_user_pending,
                 'total_uang' => $total_uang_pending
@@ -305,6 +313,7 @@ class ClaimController extends Controller
             $provinsi = $request->provinsi;
         }
 
+        $olimpiade = DB::table('cbt_konfigurasi')->where('konfigurasi_kode', 'olimpiade_aktif')->pluck('konfigurasi_isi')->first();
         $list = ClaimUserDetail::select(
             'claim_user.nama',
             'claim_user.wa',
@@ -318,6 +327,7 @@ class ClaimController extends Controller
         ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
         ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
         ->where('claim_user.status', 1)
+        ->where('claim_user.olimpiade', $olimpiade)
         ->where('paket', '!=', 'a')
         ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
         ->when($provinsi, fn ($sql, $provinsi) => $sql->where('tm_propinsi.id_propinsi', $provinsi))
