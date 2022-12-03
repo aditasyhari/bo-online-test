@@ -44,6 +44,9 @@
                 </div>
                 <div style="clear: both"></div>
             @endif
+            @if(($key+1)%8 == 0)
+                <div style="page-break-before: always;"></div>
+            @endif
         @endforeach
     @endif
 </body>
