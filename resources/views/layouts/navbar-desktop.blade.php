@@ -82,6 +82,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ url('/setting/paket') }}" class="side-menu {{ (request()->is('setting/paket*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Paket </div>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ url('/setting/user-bo') }}" class="side-menu {{ (request()->is('setting/user-bo*')) ? 'side-menu--active' : '' }}">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                         <div class="side-menu__title"> User BO </div>

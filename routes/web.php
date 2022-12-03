@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\GeneratorController;
 use App\Http\Controllers\OngkirController;
+use App\Http\Controllers\PaketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('blast-email/blast-email-token', [GlobalController::class, 'blastEmailToken']);
     Route::post('blast-email/blast-email-hasil-olimpiade', [GlobalController::class, 'blastEmailHasil']);
     
-    // user
+    // setting
     Route::get('setting/user-bo', [UserController::class, 'userBo']);
     Route::post('setting/user-bo/list', [UserController::class, 'userBoList']);
     Route::post('setting/user-bo/add', [UserController::class, 'addUserBo']);
@@ -68,6 +69,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('setting/ongkir', [OngkirController::class, 'index']);
     Route::post('setting/ongkir/list', [OngkirController::class, 'listData']);
     Route::post('setting/ongkir/update', [OngkirController::class, 'update']);
+
+    Route::get('setting/paket', [PaketController::class, 'index']);
+    Route::post('setting/paket/list', [PaketController::class, 'listData']);
+    Route::post('setting/paket/update', [PaketController::class, 'update']);
+    Route::post('setting/paket/flag-update', [PaketController::class, 'updateFlag']);
 
     Route::get('setting/user-cbt', [UserController::class, 'user']);
     Route::post('setting/user-cbt/list', [UserController::class, 'userCbtList']);
