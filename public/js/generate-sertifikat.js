@@ -8,6 +8,9 @@ $(document).ready(function() {
             nama: {
                 required: true,
             },
+            olimpiade: {
+                required: true
+            }
         },
         highlight: function(element) {
             $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

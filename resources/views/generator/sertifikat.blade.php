@@ -31,6 +31,22 @@
                     <input type="text" class="input w-full border flex-1" name="nama" id="nama" placeholder="Nama Lengkap" required>
                 </div>
             </div>
+            <div class="intro-y col-span-12 sm:col-span-3 mt-3">
+                <div class="mb-2">Pilih Olimpiade</div>
+                <select class="select2 w-full" id="olimpiade" name="olimpiade" required>
+                    <option disabled selected>Pilih</option>
+                    <option value="English Subject">English</option>
+                    <option value="Mathematics Subject">Mathematics</option>
+                    <option value="Biology Subject">Biology</option>
+                    <option value="Chemistry Subject">Chemistry</option>
+                    <option value="Physics Subject">Physics</option>
+                    <option value="History Subject">History</option>
+                    <option value="Geography Subject">Geography</option>
+                    <option value="Economy Subject">Economy</option>
+                    <option value="Natural Sciences Subject">Natural Sciences</option>
+                    <option value="Social Sciences Subject">Social Sciences</option>
+                </select>
+            </div>
             <button type="submit" id="btn-generate" class="button bg-theme-1 text-white mt-5">Generate</button>
         </form>
     </div>

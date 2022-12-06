@@ -30,30 +30,30 @@ class GeneratorController extends Controller
 
             $img_name = time().'-'.$nama.'-'.$olimpiade.'.jpg';
             $img = Image::make(public_path("images/piagam/template/$medali.jpg"));  
-            $img->text($nama, 1380, 1080, function($font) {  
+            $img->text($nama, 1570, 990, function($font) {  
                 $font->file(public_path('font/arial.ttf'));  
                 $font->size(60);  
                 $font->color('#000000');  
                 $font->align('left');  
                 $font->valign('left');  
             }); 
-            $img->text($sekolah, 1380, 1160, function($font) {  
+            $img->text($sekolah, 1570, 1065, function($font) {  
                 $font->file(public_path('font/arial.ttf'));  
                 $font->size(60);  
                 $font->color('#000000');  
                 $font->align('left');  
                 $font->valign('left');  
             });  
-            $img->text($provinsi, 1380, 1237, function($font) {  
+            $img->text($provinsi, 1570, 1140, function($font) {  
                 $font->file(public_path('font/arial.ttf'));  
                 $font->size(60);  
                 $font->color('#000000');  
                 $font->align('left');  
                 $font->valign('left');  
             }); 
-            $img->text($olimpiade, 1765, 1406, function($font) {  
+            $img->text($olimpiade, 1950, 1425, function($font) {  
                 $font->file(public_path('font/arial.ttf'));  
-                $font->size(60);  
+                $font->size(90);  
                 $font->color('#000000');  
                 $font->align('center');  
                 $font->valign('center');  
@@ -73,18 +73,26 @@ class GeneratorController extends Controller
     {
         if($request->ajax()) {
             $nama       = strtoupper($request->nama);
+            $olimpiade  = strtoupper($request->olimpiade);
 
             $nama = strtolower($request->nama);
             $nama = ucwords($nama);
-            $img_name = time().'.jpg';
-            $img = Image::make(public_path('images/sertifikat/template/certificate-neso.jpg'));  
-            $img->text($nama, 1725, 1100, function($font) {  
-                $font->file(public_path('font/great-vibes-regular.ttf'));  
+            $img_name = time().'-'.$nama.'-'.$olimpiade.'.jpg';
+            $img = Image::make(public_path('images/sertifikat/template/certificate-osn.jpg'));  
+            $img->text($nama, 1930, 1250, function($font) {  
+                $font->file(public_path('font/brush-regular.ttf'));  
                 $font->size(230);  
-                $font->color('#093F6D');  
+                $font->color('#000000');  
                 $font->align('center');  
                 $font->valign('center');  
-            });   
+            });  
+            $img->text($olimpiade, 1950, 1570, function($font) {  
+                $font->file(public_path('font/arial-bold.ttf'));  
+                $font->size(60);  
+                $font->color('#000000');  
+                $font->align('center');  
+                $font->valign('center');  
+            }); 
     
             $img->save(public_path('images/sertifikat/generate/'.$img_name)); 
     

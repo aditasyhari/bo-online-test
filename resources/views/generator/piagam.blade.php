@@ -30,19 +30,19 @@
                     <div class="mb-2">Pilih Medali</div>
                     <select class="select2 w-full" id="medali" name="medali" required>
                         <option disabled selected>Pilih</option>
-                        <option value="juara-1-emas">Juara 1 Gold</option>
-                        <option value="juara-2-silver">Juara 2 Silver</option>
-                        <option value="juara-3-bronze">Juara 3 Bronze</option>
-                        <option value="harapan-1-emas">Harapan 1 Gold</option>
-                        <option value="harapan-2-silver">Harapan 2 Silver</option>
-                        <option value="harapan-3-bronze">Harapan 3 Bronze</option>
-                        <option value="peringkat-7">Peringkat 7</option>
-                        <option value="peringkat-8">Peringkat 8</option>
-                        <option value="peringkat-9">Peringkat 9</option>
-                        <option value="peringkat-10">Peringkat 10</option>
-                        <option value="medali-emas">Medali Emas</option>
-                        <option value="medali-silver">Medali Silver</option>
-                        <option value="medali-bronze">Medali Bronze</option>
+                        <option value="1">Juara 1 Gold</option>
+                        <option value="2">Juara 2 Silver</option>
+                        <option value="3">Juara 3 Bronze</option>
+                        <option value="4">Harapan 1 Gold</option>
+                        <option value="5">Harapan 2 Silver</option>
+                        <option value="6">Harapan 3 Bronze</option>
+                        <option value="7">Peringkat 7</option>
+                        <option value="8">Peringkat 8</option>
+                        <option value="9">Peringkat 9</option>
+                        <option value="10">Peringkat 10</option>
+                        <option value="gold">Medali Emas</option>
+                        <option value="silver">Medali Silver</option>
+                        <option value="bronze">Medali Bronze</option>
                     </select>
                 </div>
             </div>
@@ -74,16 +74,16 @@
                     <div class="mb-2">Pilih Olimpiade</div>
                     <select class="select2 w-full" id="olimpiade" name="olimpiade" required>
                         <option disabled selected>Pilih</option>
-                        <option value="English">English</option>
-                        <option value="Mathematics">Mathematics</option>
-                        <option value="Biology">Biology</option>
-                        <option value="Chemistry">Chemistry</option>
-                        <option value="Physics">Physics</option>
-                        <option value="History">History</option>
-                        <option value="Geography">Geography</option>
-                        <option value="Economy">Economy</option>
-                        <option value="natural sciences">Natural Sciences</option>
-                        <option value="Social Sciences">Social Sciences</option>
+                        <option value="English Subject">English</option>
+                        <option value="Mathematics Subject">Mathematics</option>
+                        <option value="Biology Subject">Biology</option>
+                        <option value="Chemistry Subject">Chemistry</option>
+                        <option value="Physics Subject">Physics</option>
+                        <option value="History Subject">History</option>
+                        <option value="Geography Subject">Geography</option>
+                        <option value="Economy Subject">Economy</option>
+                        <option value="Natural Sciences Subject">Natural Sciences</option>
+                        <option value="Social Sciences Subject">Social Sciences</option>
                     </select>
                 </div>
             </div>
