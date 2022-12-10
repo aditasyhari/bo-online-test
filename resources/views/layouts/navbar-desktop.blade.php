@@ -93,12 +93,12 @@
                         <div class="side-menu__title"> User BO </div>
                     </a>
                 </li>
-                <!-- <li>
+                <li>
                     <a href="{{ url('/setting/user-cbt') }}" class="side-menu {{ (request()->is('setting/user-cbt*')) ? 'side-menu--active' : '' }}">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                         <div class="side-menu__title"> User CBT </div>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </li>
     </ul>

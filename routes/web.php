@@ -80,5 +80,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('setting/user-cbt/add', [UserController::class, 'addUserCbt']);
     Route::post('setting/user-cbt/detail', [UserController::class, 'detailUserCbt']);
     Route::post('setting/user-cbt/update', [UserController::class, 'updateUserCbt']);
+    Route::post('setting/user-cbt/update-discount', [UserController::class, 'updateDiscountUser']);
     Route::post('setting/user-cbt/delete', [UserController::class, 'deleteUserCbt']);
 });
