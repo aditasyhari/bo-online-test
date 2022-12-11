@@ -74,6 +74,7 @@
                     <div class="mb-2">Pilih Olimpiade</div>
                     <select class="select2 w-full" id="olimpiade" name="olimpiade" required>
                         <option disabled selected>Pilih</option>
+                        <option value="Indonesian Subject">Indonesian</option>
                         <option value="English Subject">English</option>
                         <option value="Mathematics Subject">Mathematics</option>
                         <option value="Biology Subject">Biology</option>
@@ -82,6 +83,7 @@
                         <option value="History Subject">History</option>
                         <option value="Geography Subject">Geography</option>
                         <option value="Economy Subject">Economy</option>
+                        <option value="Sociology Subject">Sociology</option>
                         <option value="Natural Sciences Subject">Natural Sciences</option>
                         <option value="Social Sciences Subject">Social Sciences</option>
                     </select>
