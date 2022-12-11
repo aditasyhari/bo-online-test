@@ -24,6 +24,29 @@ class UserController extends Controller
         return view('user.user-cbt', compact(['grub', 'propinsi']));
     }
 
+    public function userDiscount(Request $request)
+    {
+        $data = DB::table('cbt_tes_user as ctu')
+                ->select('ctu.tesuser_user_id', 'u.id_propinsi', 'p.ongkir')
+                ->leftJoin('cbt_user as u', 'u.user_id', '=', 'ctu.tesuser_user_id')
+                ->leftJoin('tm_propinsi as p', 'u.id_propinsi', '=', 'p.id_propinsi')
+                ->whereDate('ctu.tesuser_creation_time', '2022-11-13')
+                ->groupBy('ctu.tesuser_user_id', 'u.id_propinsi', 'p.ongkir')
+                ->get();
+
+        foreach($data as $d) {
+            if($d->ongkir > 1000) {
+                $diskon = (15*$d->ongkir)/100;
+                $user = CbtUser::find($d->tesuser_user_id);
+                $user->update([
+                    'discount_claim' => $diskon
+                ]);
+            }
+        }
+
+        return 'success';
+    }
+
     public function userCbtList(Request $request)
     {
         if($request->ajax()) {

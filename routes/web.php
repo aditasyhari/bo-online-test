@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('setting/paket/flag-update', [PaketController::class, 'updateFlag']);
 
     Route::get('setting/user-cbt', [UserController::class, 'user']);
+    Route::get('setting/user-cbt/discount-multiple', [UserController::class, 'userDiscount']);
     Route::post('setting/user-cbt/list', [UserController::class, 'userCbtList']);
     Route::post('setting/user-cbt/add', [UserController::class, 'addUserCbt']);
     Route::post('setting/user-cbt/detail', [UserController::class, 'detailUserCbt']);
