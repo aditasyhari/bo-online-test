@@ -230,7 +230,7 @@ function loadDataTable()
         },
         columnDefs: [
             {
-                targets: -3,
+                targets: -5,
                 render: function (data, type, full, meta) {
                   let discount = full['discount_claim'];
   
