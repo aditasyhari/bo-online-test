@@ -53,6 +53,8 @@
                 <th class="border-b-2 whitespace-no-wrap">DISKON</th>
                 <th class="border-b-2 whitespace-no-wrap">GRUB</th>
                 <th class="border-b-2 whitespace-no-wrap">SEKOLAH</th>
+                <th class="border-b-2 whitespace-no-wrap">PROVINSI</th>
+                <th class="border-b-2 whitespace-no-wrap">KOTA/KAB</th>
             </tr>
         </thead>
         <tbody>

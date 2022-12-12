@@ -221,6 +221,8 @@ function loadDataTable()
             { data: 'discount_claim' },
             { data: 'grup_nama' },
             { data: 'nama_sekolah' },
+            { data: 'nama_propinsi' },
+            { data: 'kotakab' },
         ],
         drawCallback: function(settings) {
             feather.replace();
@@ -243,8 +245,8 @@ function loadDataTable()
                 const id = full['user_id'];
 
                 var btnAction = `
-                <a href="javascript:;" data-toggle='modal' data-target='#modal-discount-data' data-id='`+id+`' class="btnDiscountData button bg-theme-1 text-white text-center p-2 transition duration-300 ease-in-out bg-white rounded-md"> 
-                    Edit Diskon 
+                <a href="javascript:;" data-toggle='modal' data-target='#modal-discount-data' data-id='`+id+`' class="btnDiscountData button bg-theme-1 text-white text-center p-2 transition duration-300 ease-in-out rounded-md"> 
+                    Diskon 
                 </a> 
                 `;
 
