@@ -25,7 +25,7 @@ class CbtTesUser extends Model
                 ->join('cbt_tes', 'cbt_tes_user.tesuser_tes_id', '=', 'cbt_tes.tes_id')
                 ->join('cbt_tes_soal', 'cbt_tes_soal.tessoal_tesuser_id', '=', 'cbt_tes_user.tesuser_id')
                 ->where('cbt_user_grup.grup_nama', $grub)
-                ->whereRaw('DATE_ADD(cbt_tes.tes_end_time, INTERVAL 3 DAY) >= ?', [$today])
+                ->whereRaw('DATE_ADD(cbt_tes.tes_end_time, INTERVAL 8 DAY) >= ?', [$today])
                 ->groupBy('cbt_tes_user.tesuser_id', 'cbt_user_grup.grup_nama', 'cbt_user.user_email')
                 ->pluck('cbt_user.user_email');
 

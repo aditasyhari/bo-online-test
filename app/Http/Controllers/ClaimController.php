@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Mail\InvoiceClaimMail;
 use App\Models\ClaimUser;
 use App\Models\ClaimUserDetail;
 use Validator;
 use Exception;
 use DataTables;
+use Mail;
 use PDF;
 use DB;
 
@@ -180,13 +182,40 @@ class ClaimController extends Controller
         if($request->ajax()) {
             $id = $request->id;
             $claim = ClaimUser::find($id);
+            $email = $claim->email;
             $claim->update([
                 'status' => 1
             ]);
+
+            // try {
+                $detailClaim = ClaimUserDetail::select(
+                            'p.nama_paket',
+                            'p.harga',
+                            'p.deskripsi'
+                        )
+                        ->leftJoin("tm_paket as p", 'p.nama_paket', '=', 'claim_user_detail.paket')
+                        ->where('claim_id', $claim->id)
+                        ->get();
+
+                $data = [
+                    'nama' => $claim->nama,
+                    'total' => number_format($claim->total, 0, ".", "."),
+                    'subtotal' => number_format($claim->item, 0, ".", "."),
+                    'diskon' => number_format($claim->discount_claim, 0, ".", "."),
+                    'ongkir' => number_format($claim->ongkir, 0, ".", "."),
+                    'detailClaim' => $detailClaim
+                ];
+                
+                Mail::to($email)->send(new InvoiceClaimMail($data));
+
+                $message = "Berhasil validasi dan invoice BERHASIL dikirim ke email user.";
+            // } catch (Exception $e) {
+            //     $message = "Berhasil validasi dan invoice GAGAL dikirim ke email user.";
+            // }
             
             return response()->json([
                 'success' => true,
-                'message' => 'Berhasil validasi'
+                'message' => $message
             ], 200);
         }
     }
