@@ -230,6 +230,15 @@ function loadDataTable()
         },
         columnDefs: [
             {
+                targets: -6,
+                render: function (data, type, full, meta) {
+                  let email = full['user_email'];
+                  let hp = full['nomor_hp'] != null ? full['nomor_hp'] : "-";
+  
+                  return "<div>"+email+"<br>"+hp+"</div>";
+                }
+            },
+            {
                 targets: -5,
                 render: function (data, type, full, meta) {
                   let discount = full['discount_claim'];

@@ -61,6 +61,7 @@ class UserController extends Controller
                 'grup_nama',
                 'user_email',
                 'nama_sekolah',
+                'nomor_hp',
                 'discount_claim',
                 'nama_propinsi',
                 'kotakab',

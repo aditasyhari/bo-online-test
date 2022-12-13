@@ -49,7 +49,7 @@
                 <th class="border-b-2 text-center whitespace-no-wrap">#</th>
                 <th class="border-b-2 whitespace-no-wrap">USERNAME</th>
                 <th class="border-b-2 whitespace-no-wrap">NAMA</th>
-                <th class="border-b-2 whitespace-no-wrap">EMAIL</th>
+                <th class="border-b-2 whitespace-no-wrap">EMAIL/NO.HP</th>
                 <th class="border-b-2 whitespace-no-wrap">DISKON</th>
                 <th class="border-b-2 whitespace-no-wrap">GRUB</th>
                 <th class="border-b-2 whitespace-no-wrap">SEKOLAH</th>
