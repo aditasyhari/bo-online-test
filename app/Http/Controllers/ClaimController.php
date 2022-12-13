@@ -187,7 +187,7 @@ class ClaimController extends Controller
                 'status' => 1
             ]);
 
-            // try {
+            try {
                 $detailClaim = ClaimUserDetail::select(
                             'p.nama_paket',
                             'p.harga',
@@ -209,9 +209,9 @@ class ClaimController extends Controller
                 Mail::to($email)->send(new InvoiceClaimMail($data));
 
                 $message = "Berhasil validasi dan invoice BERHASIL dikirim ke email user.";
-            // } catch (Exception $e) {
-            //     $message = "Berhasil validasi dan invoice GAGAL dikirim ke email user.";
-            // }
+            } catch (Exception $e) {
+                $message = "Berhasil validasi dan invoice GAGAL dikirim ke email user.";
+            }
             
             return response()->json([
                 'success' => true,
