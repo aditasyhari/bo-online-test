@@ -348,12 +348,14 @@ class ClaimController extends Controller
             'claim_user.wa',
             'tm_kotakab.kotakab',
             'tm_propinsi.nama_propinsi',
+            'tm_kecamatan.nama_kecamatan',
             'claim_user.alamat',
         )
         ->leftJoin('claim_user', 'claim_user.id', '=', 'claim_user_detail.claim_id')
         ->leftJoin('cbt_user', 'cbt_user.user_id', '=', 'claim_user.user_id')
-        ->leftJoin('tm_kotakab', 'cbt_user.id_kotakab', '=', 'tm_kotakab.id_kotakab')
-        ->leftJoin('tm_propinsi', 'cbt_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
+        ->leftJoin('tm_kecamatan', 'claim_user.id_kecamatan', '=', 'tm_kecamatan.id_kecamatan')
+        ->leftJoin('tm_kotakab', 'claim_user.id_kotakab', '=', 'tm_kotakab.id_kotakab')
+        ->leftJoin('tm_propinsi', 'claim_user.id_propinsi', '=', 'tm_propinsi.id_propinsi')
         ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
         ->where('claim_user.status', 1)
         ->where('claim_user.olimpiade', $olimpiade)

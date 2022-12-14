@@ -40,7 +40,7 @@
                 <div class="box right">
                     <h4>{{$value->nama}}<br>{{$value->wa}}</h4>
                     <p>{{$value->alamat}}</p>
-                    <h5>{{$value->kotakab}}, {{$value->nama_propinsi}}</h5>
+                    <h5>{{$value->nama_kecamatan}}, {{$value->kotakab}}, {{$value->nama_propinsi}}</h5>
                 </div>
                 <div style="clear: both"></div>
             @endif
