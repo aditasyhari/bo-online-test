@@ -34,13 +34,17 @@
                 <div class="box left">
                     <h4>{{$value->nama}}<br>{{$value->wa}}</h4>
                     <p>{{$value->alamat}}</p>
-                    <h5>{{$value->kotakab}}, {{$value->nama_propinsi}}</h5>
+                    <h6>KEC. {{$value->nama_kecamatan}}</h6>
+                    <h6>KAB. {{$value->kotakab}}</h6>
+                    <h6>PROV. {{$value->nama_propinsi}}</h6>
                 </div>
             @else
                 <div class="box right">
                     <h4>{{$value->nama}}<br>{{$value->wa}}</h4>
-                    <p>{{$value->alamat}}</p>
-                    <h5>{{$value->nama_kecamatan}}, {{$value->kotakab}}, {{$value->nama_propinsi}}</h5>
+                    <p>{{$value->alamat}}, {{$value->nama_kecamatan}}</p>
+                    <h6>KEC. {{$value->nama_kecamatan}}</h6>
+                    <h6>KAB. {{$value->kotakab}}</h6>
+                    <h6>PROV. {{$value->nama_propinsi}}</h6>
                 </div>
                 <div style="clear: both"></div>
             @endif
