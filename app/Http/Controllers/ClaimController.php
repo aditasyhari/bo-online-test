@@ -26,10 +26,10 @@ class ClaimController extends Controller
         return view('user.claim-paket', compact('propinsi'));
     }
 
-    public function epiagam()
+    public function piagam()
     {
         $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
-        return view('user.claim-epiagam', compact('propinsi'));
+        return view('user.claim-piagam', compact('propinsi'));
     }
 
     public function medali()
@@ -92,7 +92,7 @@ class ClaimController extends Controller
         }
     }
 
-    public function listDataEpiagam(Request $request)
+    public function listDataPiagam(Request $request)
     {
         if($request->ajax()) {
             $grub = $request->filter_grub;
@@ -114,7 +114,7 @@ class ClaimController extends Controller
             ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
             ->where('claim_user.status', 1)
             ->where('claim_user.olimpiade', $olimpiade)
-            ->whereIn('paket', ['a','d','bonus'])
+            ->whereIn('paket', ['b','c','bonus'])
             ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
             ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
             ->orderBy('claim_user_detail.id', 'desc')
@@ -149,7 +149,7 @@ class ClaimController extends Controller
             ->leftJoin('cbt_user_grup', 'cbt_user.user_grup_id', '=', 'cbt_user_grup.grup_id')
             ->where('claim_user.status', 1)
             ->where('claim_user.olimpiade', $olimpiade)
-            ->whereIn('paket', ['c','d','bonus'])
+            ->whereIn('paket', ['c','bonus'])
             ->when($grub, fn ($sql, $grub) => $sql->where('cbt_user_grup.grup_id', $grub))
             ->when($id_propinsi, fn ($sql, $id_propinsi) => $sql->where('tm_propinsi.id_propinsi', $id_propinsi))
             ->orderBy('claim_user_detail.id', 'desc')

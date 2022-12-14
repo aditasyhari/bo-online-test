@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Valid E-Piagam - Back Office @endsection
+@section('title') Valid Piagam Cetak - Back Office @endsection
 
 @section('css')
 @endsection
@@ -13,14 +13,14 @@
     <i data-feather="chevron-right" class="breadcrumb__icon"></i> 
     <a href="" class="breadcrumb">Claim</a>
     <i data-feather="chevron-right" class="breadcrumb__icon"></i> 
-    <a href="" class="breadcrumb--active">Valid E-Piagam</a>
+    <a href="" class="breadcrumb--active">Valid Piagam Cetak</a>
 </div>
 @endsection
 
 @section('content')
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Data Valid E-Piagam (PAKET A, D, BONUS)
+        Data Valid Piagam Cetak (PAKET B, C, BONUS)
     </h2>
 </div>
 <!-- <div class="grid grid-rows-1 grid-flow-col gap-4">
@@ -70,5 +70,5 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('js/claim-epiagam.js'. '?time=' . date("Ymdhisu")) }}"></script>
+<script src="{{ asset('js/claim-piagam.js'. '?time=' . date("Ymdhisu")) }}"></script>
 @endsection

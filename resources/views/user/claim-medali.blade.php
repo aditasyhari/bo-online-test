@@ -20,7 +20,7 @@
 @section('content')
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">
-        Data Valid Medali (PAKET C, D, BONUS)
+        Data Valid Medali (PAKET C, BONUS)
     </h2>
 </div>
 <!-- <div class="grid grid-rows-1 grid-flow-col gap-4">

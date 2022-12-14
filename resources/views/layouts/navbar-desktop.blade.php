@@ -30,9 +30,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('claim-epiagam') }}" class="side-menu {{ (request()->is('claim-epiagam*')) ? 'side-menu--active' : '' }}">
+                    <a href="{{ url('claim-piagam') }}" class="side-menu {{ (request()->is('claim-piagam*')) ? 'side-menu--active' : '' }}">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Valid E-Piagam </div>
+                        <div class="side-menu__title"> Valid Piagam Cetak</div>
                     </a>
                 </li>
                 <li>
