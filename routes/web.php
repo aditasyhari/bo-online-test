@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('setting/user-cbt', [UserController::class, 'user']);
     Route::get('setting/user-cbt/discount-multiple', [UserController::class, 'userDiscount']);
+    Route::get('setting/user-cbt/remove-discount', [UserController::class, 'removeDiscount']);
     Route::post('setting/user-cbt/list', [UserController::class, 'userCbtList']);
     Route::post('setting/user-cbt/add', [UserController::class, 'addUserCbt']);
     Route::post('setting/user-cbt/detail', [UserController::class, 'detailUserCbt']);

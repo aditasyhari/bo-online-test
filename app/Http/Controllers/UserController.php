@@ -47,6 +47,15 @@ class UserController extends Controller
         return 'success';
     }
 
+    public function removeDiscount(Request $request)
+    {
+        CbtUser::where('discount_claim', '!=', 0)->update([
+            'discount_claim' => 0
+        ]);
+
+        return 'success';
+    }
+
     public function userCbtList(Request $request)
     {
         if($request->ajax()) {
