@@ -1,11 +1,17 @@
 $(document).ready(function() {
     var selectorTable = $('#table-data');
 
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     loadDataTable();
 
     $('#btn-pilih').click(function(){
         loadingStart();
-        reloadDataTable(selectorTable);
+        loadDataTable();
     });
 
     $("#select-filter-tes").on('change', function () {
@@ -16,12 +22,6 @@ $(document).ready(function() {
 
 function loadDataTable() 
 {
-    $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     $('#table-data').DataTable({
         destroy: true,
         processing: true,
@@ -47,12 +47,13 @@ function loadDataTable()
             // },
             { data: 'tes_nama' },
             { data: 'user_firstname' },
+            { data: 'nomor_hp' },
             { data: 'nama_sekolah' },
             { data: 'kotakab' },
             { data: 'nama_propinsi' },
             { data: 'nilai' },
-            // { data: 'medali' },
-            // { data: 'grade' }
+            { data: 'medali' },
+            { data: 'grade' }
         ],
         drawCallback: function(settings) {
             feather.replace();

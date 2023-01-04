@@ -57,12 +57,13 @@
             <tr>
                 <th class="border-b-2 whitespace-no-wrap">OLIMPIADE</th>
                 <th class="border-b-2 whitespace-no-wrap">NAMA</th>
+                <th class="border-b-2 whitespace-no-wrap">NO.HP</th>
                 <th class="border-b-2 whitespace-no-wrap">SEKOLAH</th>
                 <th class="border-b-2 whitespace-no-wrap">KOTA/KAB</th>
                 <th class="border-b-2 whitespace-no-wrap">PROVINSI</th>
                 <th class="border-b-2 whitespace-no-wrap">NILAI</th>
-                <!-- <th class="border-b-2 whitespace-no-wrap">MEDALI</th>
-                <th class="border-b-2 whitespace-no-wrap">GRADE</th> -->
+                <th class="border-b-2 whitespace-no-wrap">MEDALI</th>
+                <th class="border-b-2 whitespace-no-wrap">GRADE</th>
             </tr>
         </thead>
         <tbody>

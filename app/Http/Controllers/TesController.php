@@ -22,15 +22,15 @@ class TesController extends Controller
     {
         if($request->ajax()) {
             $order = $request->order;
-            $tes_id = 20;
-            // $tes_id = $request->tes_id;
+            $tes_id = $request->tes_id;
+            // $tes_id = 46;
 
             $result = [];
             if($tes_id) {
                 $result = CbtTesUser::hasilTes($tes_id, $order);
             }
 
-            $data = DataTables::of($result)->addIndexColumn()->make(true);
+            $data = DataTables::of($result)->make(true);
 
             return $data;
         }
