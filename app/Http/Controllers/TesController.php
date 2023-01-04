@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CbtTes;
+use App\Models\CbtTesUser;
 Use DataTables;
 Use Validator;
 Use Exception;
@@ -21,11 +22,12 @@ class TesController extends Controller
     {
         if($request->ajax()) {
             $order = $request->order;
-            $tes_id = $request->tes_id;
+            $tes_id = 20;
+            // $tes_id = $request->tes_id;
 
             $result = [];
             if($tes_id) {
-                $result = CbtTes::hasilTes($tes_id, $order);
+                $result = CbtTesUser::hasilTes($tes_id, $order);
             }
 
             $data = DataTables::of($result)->addIndexColumn()->make(true);
