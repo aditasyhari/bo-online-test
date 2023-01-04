@@ -25,7 +25,7 @@ class TesController extends Controller
 
             $result = [];
             if($tes_id) {
-                $result = [];
+                $result = CbtTes::hasilTes($tes_id, $order);
             }
 
             $data = DataTables::of($result)->addIndexColumn()->make(true);
