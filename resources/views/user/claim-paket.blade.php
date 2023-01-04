@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title') Valid E-Piagam - Back Office @endsection
+@section('title') Valid Claim Paket - Back Office @endsection
 
 @section('css')
 @endsection

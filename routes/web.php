@@ -8,6 +8,7 @@ use App\Http\Controllers\ClaimController;
 use App\Http\Controllers\GeneratorController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\TesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('generator-piagam', [GeneratorController::class, 'generatePiagam']);
     Route::post('generator-sertifikat', [GeneratorController::class, 'generateSertifikat']);
 
+    // data tes
+    Route::get('data-tes/hasil-tes', [TesController::class, 'hasilTes']);
+    Route::post('data-tes/hasil-tes/list', [TesController::class, 'hasilTesList']);
 
     // blast email
     Route::get('blast-email', [GlobalController::class, 'blastEmail']);

@@ -64,6 +64,20 @@
             </ul>
         </li>
         <li>
+            <a href="javascipt:;" class="side-menu {{ (request()->is('data-tes*')) ? 'side-menu--active side-menu--open' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="hard-drive"></i> </div>
+                <div class="side-menu__title"> Data Tes <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{ url('data-tes/hasil-tes') }}" class="side-menu {{ (request()->is('data-tes/hasil-tes*')) ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Hasil Tes </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a href="{{ url('blast-email') }}" class="side-menu {{ (request()->is('blast-email*')) ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="mail"></i> </div>
                 <div class="side-menu__title"> Blast Email </div>
