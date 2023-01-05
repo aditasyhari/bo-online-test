@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // data tes
     Route::get('data-tes/hasil-tes', [TesController::class, 'hasilTes']);
+    Route::get('data-tes/hasil-tes/export', [TesController::class, 'export']);
     Route::post('data-tes/hasil-tes/list', [TesController::class, 'hasilTesList']);
 
     // blast email

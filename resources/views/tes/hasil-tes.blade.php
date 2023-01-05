@@ -28,9 +28,9 @@
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-7 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-pending"> 0 Data Pending (Rp 0) </span></div>
 </div> -->
 <div class="mt-5">
-    <!-- <div class="flex-none w-1/5">
-        <button class="button w-100 inline-block bg-theme-1 text-white" onclick="exportExcel()">Export Excel</button>
-    </div> -->
+    <div class="flex-none w-1/5">
+        <button class="button w-100 inline-block bg-theme-5 text-white" id="btn-export" onclick="exportExcel()" disabled>Export Excel</button>
+    </div>
     <div class="">
         <select class="select2 select-filter-order" id="select-filter-order">
             <option value="" disabled>Urutkan</option>
@@ -63,7 +63,7 @@
                 <th class="border-b-2 whitespace-no-wrap">PROVINSI</th>
                 <th class="border-b-2 whitespace-no-wrap">NILAI</th>
                 <th class="border-b-2 whitespace-no-wrap">MEDALI</th>
-                <th class="border-b-2 whitespace-no-wrap">GRADE</th>
+                <th class="border-b-2 whitespace-no-wrap">PREDIKAT</th>
             </tr>
         </thead>
         <tbody>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportHasilTes;
 use App\Models\CbtTes;
 use App\Models\CbtTesUser;
 Use DataTables;
@@ -34,5 +36,19 @@ class TesController extends Controller
 
             return $data;
         }
+    }
+
+    public function export(Request $request)
+    {
+        $tes_id = $request->tes_id;
+        $order = $request->order;
+
+        if($tes_id) {
+            // $data = CbtTesUser::hasilTesExport($tes_id, $order);
+            // dd($data);
+            return Excel::download(new ExportHasilTes($tes_id, $order), time().'-hasil-tes.xlsx');
+        }
+
+        return back();
     }
 }

@@ -17,6 +17,8 @@ $(document).ready(function() {
     $("#select-filter-tes").on('change', function () {
         $('#btn-pilih').removeAttr("disabled");
         $('#btn-pilih').removeClass("bg-theme-5").addClass("bg-theme-1");
+        $('#btn-export').removeAttr("disabled");
+        $('#btn-export').removeClass("bg-theme-5").addClass("bg-theme-1");
     });
 });
 
@@ -53,7 +55,7 @@ function loadDataTable()
             { data: 'nama_propinsi' },
             { data: 'nilai' },
             { data: 'medali' },
-            { data: 'grade' }
+            { data: 'predikat' }
         ],
         drawCallback: function(settings) {
             feather.replace();
@@ -62,4 +64,12 @@ function loadDataTable()
         
     });
 
+}
+
+function exportExcel() {
+    const order = $('#select-filter-order option:selected').val();
+    const tes_id = $('#select-filter-tes option:selected').val();
+    const url = 'hasil-tes/export?tes_id='+tes_id+'&order='+order;
+    // console.log(url);
+    window.open(url);
 }
