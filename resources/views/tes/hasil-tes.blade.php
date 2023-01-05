@@ -28,25 +28,21 @@
     <div class="rounded-md flex items-center px-5 py-4 mb-2 mt-2 bg-theme-7 text-white"> <i data-feather="info" class="w-6 h-6 mr-2"></i><span id="total-pending"> 0 Data Pending (Rp 0) </span></div>
 </div> -->
 <div class="mt-5">
-    <div class="flex-none w-1/5">
+    <div class="flex-none">
         <button class="button w-100 inline-block bg-theme-5 text-white" id="btn-export" onclick="exportExcel()" disabled>Export Excel</button>
-    </div>
-    <div class="">
-        <select class="select2 select-filter-order" id="select-filter-order">
-            <option value="" disabled>Urutkan</option>
-            <option value="tertinggi" selected>Nilai Tertinggi</option>
-            <option value="terendah">Nilai Terendah</option>
-            <option value="nama">Nama</option>
-        </select>
-        <select class="select2 select-filter-tes" id="select-filter-tes">
-            <option selected value="" disabled>Pilih Mapel Olimpiade</option>
-            @foreach($tes as $t)
-                <option value="{{ $t->tes_id }}">{{ $t->tes_nama }}</option>
-            @endforeach
-        </select>
-        <button class="button w-100 inline-block bg-theme-5 text-white" id="btn-pilih" disabled>Tampilkan</button>
-    </div>
-    <div class="flex-none w-1/5 mr-3">
+            <select class="select2 select-filter-order" id="select-filter-order">
+                <option value="" disabled>Urutkan</option>
+                <option value="tertinggi" selected>Nilai Tertinggi</option>
+                <option value="terendah">Nilai Terendah</option>
+                <option value="nama">Nama</option>
+            </select>
+            <select class="select2 select-filter-tes" id="select-filter-tes">
+                <option selected value="" disabled>Pilih Mapel Olimpiade</option>
+                @foreach($tes as $t)
+                    <option value="{{ $t->tes_id }}">{{ $t->tes_nama }}</option>
+                @endforeach
+            </select>
+            <button class="button w-100 inline-block bg-theme-5 text-white" id="btn-pilih" disabled>Tampilkan</button>
     </div>
 </div>
 
