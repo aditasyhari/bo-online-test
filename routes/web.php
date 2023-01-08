@@ -9,6 +9,7 @@ use App\Http\Controllers\GeneratorController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\TesController;
+use App\Http\Controllers\ValidasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,10 @@ Route::post('auth/login', [AuthController::class, 'login']);
 Route::group(['middleware' => 'auth'], function () {
     Route::post('auth/logout', [AuthController::class, 'logout']);
 
-    // dashboard
+    // global
     Route::get('dashboard', [GlobalController::class, 'dashboard']);
+    Route::get('list-olimpiade', [GlobalController::class, 'olimpiade']);
+    Route::get('check-user', [GlobalController::class, 'checkUser']);
 
     // claim
     Route::get('claim-all', [ClaimController::class, 'index']);
@@ -57,6 +60,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('data-tes/hasil-tes', [TesController::class, 'hasilTes']);
     Route::get('data-tes/hasil-tes/export', [TesController::class, 'export']);
     Route::post('data-tes/hasil-tes/list', [TesController::class, 'hasilTesList']);
+
+     // validasi
+     Route::get('validasi/pendaftaran', [ValidasiController::class, 'pendaftaran']);
+     Route::post('validasi/pendaftaran', [ValidasiController::class, 'validasi']);
+     Route::post('validasi/pendaftaran/list', [ValidasiController::class, 'listTerdaftar']);
 
     // blast email
     Route::get('blast-email', [GlobalController::class, 'blastEmail']);

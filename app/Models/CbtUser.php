@@ -12,4 +12,11 @@ class CbtUser extends Model
     protected $table = "cbt_user";
     protected $guarded = [];
     public $timestamps = false;
+
+    public function scopeCheck($query, $email)
+    {
+        $sql = $query->where('user_email', $email);
+
+        return $sql;
+    }
 }

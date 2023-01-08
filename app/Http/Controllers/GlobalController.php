@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Mail\TokenMail;
 use App\Mail\ResultMail;
 use App\Models\CbtTesUser;
+use App\Models\CbtTes;
+use App\Models\CbtUser;
 use Validator;
 use Mail;
 use Exception;
@@ -20,6 +22,46 @@ class GlobalController extends Controller
     public function blastEmail() 
     {
         return view('email.blast-email');
+    }
+
+    public function olimpiade(Request $request)
+    {
+        if($request->ajax()) {
+            $grub_id = $request->grub_id;
+            $data = CbtTes::list($grub_id);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Get Data',
+                'data' => $data
+            ], 200);
+        }
+    }
+
+    public function checkUser(Request $request)
+    {
+        if($request->ajax()) {
+            $validateData = Validator::make($request->all(), [
+                'email'     => 'nullable|email',
+            ]);
+
+            if ($validateData->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => '',
+                    'data' => 0
+                ], 200);
+            }
+
+            $email = $request->email;
+            $data = CbtUser::check($email)->count();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Berhasil Get Data',
+                'data' => $data
+            ], 200);
+        }
     }
 
     public function blastEmailToken(Request $request)
