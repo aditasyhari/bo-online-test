@@ -57,7 +57,7 @@
             <option value="d">D - E-Piagam + Piagam & Sertifikat Cetak + Medali</option>
             <option value="bonus">BONUS - E-Piagam + Piagam & Sertifikat Cetak + Medali + Kaos + Topi + Tote Bag</option> -->
             @foreach($paket as $pkt)
-                <option value="{{ $pkt->nama_paket }}">{{ $pkt->nama_paket }} - {{ $pkt->deskripsi }}</option>
+                <option value="{{ $pkt->nama_paket }}">{{ $pkt->nama_paket }}</option>
             @endforeach
         </select>
     </div>
