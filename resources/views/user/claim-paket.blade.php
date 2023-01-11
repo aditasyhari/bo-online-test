@@ -35,9 +35,9 @@
     <div class="flex-auto w-2/5 mr-2">
         <select class="select2 select-filter-grub" id="select-filter-grub">
             <option selected value="">Semua Grub</option>
-            <option value="7">SD</option>
-            <option value="5">SMP</option>
-            <option value="6">SMA</option>
+            @foreach($grub as $g)
+                <option value="{{ $g->grup_id }}">{{ $g->grup_nama }}</option>
+            @endforeach
         </select>
     </div>
     <div class="flex-auto w-2/5 mr-2">
@@ -51,11 +51,14 @@
     <div class="flex-auto w-2/5 mr-2">
         <select class="select2 select-filter-paket" id="select-filter-paket">
             <option selected value="">Semua Paket</option>
-            <option value="a">A - E-Piagam Penghargaan</option>
+            <!-- <option value="a">A - E-Piagam Penghargaan</option>
             <option value="b">B - Piagam Penghargaan dan Sertifikat Cetak</option>
             <option value="c">C - Piagam & Sertifikat Cetak + Medali</option>
             <option value="d">D - E-Piagam + Piagam & Sertifikat Cetak + Medali</option>
-            <option value="bonus">BONUS - E-Piagam + Piagam & Sertifikat Cetak + Medali + Kaos + Topi + Tote Bag</option>
+            <option value="bonus">BONUS - E-Piagam + Piagam & Sertifikat Cetak + Medali + Kaos + Topi + Tote Bag</option> -->
+            @foreach($paket as $pkt)
+                <option value="{{ $pkt->nama_paket }}">{{ $pkt->nama_paket }} - {{ $pkt->deskripsi }}</option>
+            @endforeach
         </select>
     </div>
 </div>

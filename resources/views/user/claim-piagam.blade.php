@@ -32,9 +32,9 @@
     <!-- <div class=""> -->
         <select class="select2 select-filter-grub" id="select-filter-grub">
             <option selected value="">Semua Grub</option>
-            <option value="7">SD</option>
-            <option value="5">SMP</option>
-            <option value="6">SMA</option>
+            @foreach($grub as $g)
+                <option value="{{ $g->grup_id }}">{{ $g->grup_nama }}</option>
+            @endforeach
         </select>
     <!-- </div> -->
     <!-- <div class=""> -->

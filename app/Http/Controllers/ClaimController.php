@@ -23,19 +23,23 @@ class ClaimController extends Controller
     public function paket()
     {
         $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
-        return view('user.claim-paket', compact('propinsi'));
+        $paket = DB::table('tm_paket')->get();
+        $grub = DB::table('cbt_user_grup')->get();
+        return view('user.claim-paket', compact('propinsi', 'paket', 'grub'));
     }
 
     public function piagam()
     {
         $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
-        return view('user.claim-piagam', compact('propinsi'));
+        $grub = DB::table('cbt_user_grup')->get();
+        return view('user.claim-piagam', compact('propinsi', 'grub'));
     }
 
     public function medali()
     {
         $propinsi = DB::table('tm_propinsi')->orderBy('nama_propinsi', 'asc')->get();
-        return view('user.claim-medali', compact('propinsi'));
+        $grub = DB::table('cbt_user_grup')->get();
+        return view('user.claim-medali', compact('propinsi', 'grub'));
     }
 
     public function listData(Request $request)
