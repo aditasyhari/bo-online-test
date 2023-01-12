@@ -26,6 +26,13 @@ class ClaimUser extends Model
         return $sql;
     }
 
+    public function scopeTotalOlimpiade($query)
+    {
+        $sql = $query->select('olimpiade')->where('status', 1)->groupBy('olimpiade');
+
+        return $sql;
+    }
+
     public function scopeTopClaim($query)
     {
         $total = "(COUNT(cu.user_id)) as total";

@@ -21,7 +21,7 @@ class GlobalController extends Controller
     {
         $latestUser = CbtUser::latestUser(9)->get();
         $userClaim = ClaimUser::userClaim()->count();
-        $olimpiade = ClaimUser::userClaim()->groupBy('olimpiade')->count();
+        $olimpiade = count(ClaimUser::totalOlimpiade()->pluck('olimpiade'));
         $mapel = CbtTes::count();
         $users = CbtUser::count();
         $topUserClaim = ClaimUser::topClaim()->get();
