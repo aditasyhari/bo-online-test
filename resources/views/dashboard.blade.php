@@ -234,7 +234,7 @@ if ($('#grub-chart').length) {
       data: {
         labels: ["SMP", "SMA", "SD", "UNIVERSITAS"],
         datasets: [{
-          data: {{ $chartGrub }},
+          data: {{ Js::from($chartGrub) }},
           backgroundColor: ["#FF8B26", "#FFC533", "#285FD3", "#FFD700"],
           hoverBackgroundColor: ["#FF8B26", "#FFC533", "#285FD3", "#FFD700"],
           borderWidth: 5,
@@ -257,7 +257,7 @@ if ($('#claim-chart').length) {
       data: {
         labels: ["PAKET A", "PAKET B", "PAKET C", "PAKET D", "PAKET BONUS"],
         datasets: [{
-          data: {{ $chartPaket }},
+          data: {{ Js::from($chartPaket) }},
           backgroundColor: ["#FF8B26", "#FFC533", "#285FD3", "#00FFFF", "#FFD700"],
           hoverBackgroundColor: ["#FF8B26", "#FFC533", "#285FD3", "#00FFFF", "#FFD700"],
           borderWidth: 5,
